@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>나우모아애드 — Hero (디자인 시스템 기준안)</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  /* ============================================================
+     나우모아애드 디자인 시스템 — v1 (Hero 기준)
+     Stone / Charcoal / Warm-grey / Wood — 국내 프리미엄 톤
+     Typeface: Pretendard 단일 패밀리, 굵기로 위계 표현
+     ============================================================ */
+  :root{
+    --stone:#F4F3EF;
+    --stone-raised:#FFFFFF;
+    --charcoal:#191814;
+    --charcoal-soft:#2A2822;
+    --warm-grey:#6E6B62;
+    --warm-grey-soft:#9C978A;
+    --line:#E3E0D6;
+    --wood:#8A6A45;
+    --wood-deep:#5C4529;
+    --on-dark:#F3F1EA;
+    --on-dark-soft:#B9B5A8;
+    --font: 'Pretendard Variable', Pretendard, -apple-system, 'Malgun Gothic', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0;}
+  body{
+    background:var(--stone); color:var(--charcoal); font-family:var(--font);
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--wood); color:#fff;}
+
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:30px 44px; mix-blend-mode:difference;
+  }
+  .nav .word{ font-size:16px; font-weight:700; letter-spacing:.01em; color:#fff; }
+  .nav .link{
+    font-size:12.5px; font-weight:500; letter-spacing:.03em; color:#fff; text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.55); padding-bottom:3px;
+  }
+
+  .hero{
+    position:relative; height:100svh; min-height:680px; width:100%; overflow:hidden;
+  }
+  .hero .frame{ position:absolute; inset:0; }
+  .hero .frame img{
+    width:100%; height:100%; object-fit:cover; object-position:60% 50%;
+    filter:saturate(.86) contrast(1.06) brightness(.82) sepia(.06);
+    transform:scale(1.04);
+  }
+  .hero .scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(19,18,15,.72) 0%, rgba(19,18,15,.38) 42%, rgba(19,18,15,.12) 68%, rgba(19,18,15,.28) 100%),
+      linear-gradient(0deg, rgba(19,18,15,.55) 0%, rgba(19,18,15,.05) 34%, rgba(19,18,15,.05) 60%, rgba(19,18,15,.2) 100%);
+  }
+
+  .hero .content{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:0 44px 96px;
+  }
+  .hero .inner{ max-width:760px; }
+  .hero .eyebrow{
+    font-size:12px; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--wood); margin:0 0 26px;
+  }
+  .hero h1{
+    margin:0; color:var(--on-dark);
+    font-size:clamp(34px, 5.6vw, 68px);
+    font-weight:800; line-height:1.22; letter-spacing:-.02em;
+  }
+  .hero .sub{
+    margin:30px 0 0; max-width:460px;
+    color:var(--on-dark-soft); font-size:clamp(15px,1.6vw,17px);
+    font-weight:400; line-height:1.7; letter-spacing:-.005em;
+  }
+
+  .scrolldown{
+    position:absolute; right:44px; bottom:40px; z-index:2;
+    writing-mode:vertical-rl; font-size:10.5px; font-weight:500;
+    letter-spacing:.24em; color:var(--on-dark-soft); text-transform:uppercase;
+    display:flex; align-items:center; gap:12px;
+  }
+  .scrolldown::after{ content:''; width:1px; height:46px; background:rgba(243,241,234,.4); }
+
+  .mark{
+    position:absolute; left:44px; bottom:40px; z-index:2;
+    font-size:11px; color:var(--on-dark-soft); letter-spacing:.04em;
+  }
+
+  @media (max-width:640px){
+    .nav{padding:22px 24px;}
+    .hero .content{padding:0 24px 64px;}
+    .hero .frame img{object-position:70% 50%;}
+    .mark{left:24px;}
+    .scrolldown{right:24px;}
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .hero h1, .hero .sub, .hero .eyebrow{
+      opacity:0; transform:translateY(16px);
+      animation:rise .9s cubic-bezier(.16,.8,.3,1) forwards;
+    }
+    .hero .eyebrow{animation-delay:.15s;}
+    .hero h1{animation-delay:.3s;}
+    .hero .sub{animation-delay:.5s;}
+    @keyframes rise{ to{opacity:1; transform:translateY(0);} }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="word">나우모아애드</span>
+  <a class="link" href="#cta">무료 브랜드 진단</a>
+</nav>
+
+<section class="hero">
+  <div class="frame"><img src="assets/img/hero-space.jpg" alt=""></div>
+  <div class="scrim"></div>
+
+  <div class="content">
+    <div class="inner">
+      <p class="eyebrow">Personal Branding for Professionals</p>
+      <h1>당신은 어떤 전문가로<br>기억되고 있습니까?</h1>
+      <p class="sub">검색되는 순간, 대답은 이미 시작됩니다.</p>
+    </div>
+  </div>
+
+  <span class="mark">NowMoaAd</span>
+  <div class="scrolldown">Scroll</div>
+</section>
+
+</body>
+</html>

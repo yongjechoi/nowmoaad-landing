@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>나우모아애드 — 브랜드 전략 제안서</title>
+<style>
+  :root{
+    --bg:#F3F2ED;
+    --bg-raised:#FFFFFF;
+    --bg-sunken:#EAE8DF;
+    --ink:#16180F;
+    --ink-soft:#55574B;
+    --ink-faint:#8B8C7E;
+    --line:#DCDACD;
+    --accent:#8A6B2F;
+    --accent-deep:#5C4720;
+    --accent-soft:#EDE3CC;
+    --demo-bg:#14150D;
+    --demo-text:#F1EFE4;
+    --demo-text-soft:#C9C6B4;
+    --demo-accent:#D2A85A;
+    --serif: Georgia, Batang, "Nanum Myeongjo", serif;
+    --sans: "Segoe UI", "Malgun Gothic", -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#ddd;}
+  body{font-family:var(--sans); color:var(--ink); line-height:1.55; -webkit-font-smoothing:antialiased;}
+  a{color:var(--accent-deep); text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif); margin:0; text-wrap:balance;}
+  p{margin:0;}
+  ul,ol{margin:0;padding:0;}
+
+  .deck{display:flex; flex-direction:column; align-items:center; gap:24px; padding:24px 0;}
+
+  .page{
+    width:794px; min-height:1123px; background:var(--bg); color:var(--ink);
+    position:relative; padding:64px 60px 96px; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+
+  .eyebrow{font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-deep); font-weight:700; margin:0 0 16px;}
+  .lede{font-size:14.5px; color:var(--ink-soft); max-width:560px; margin-bottom:36px;}
+  h2.title{font-size:29px; font-weight:600; margin-bottom:8px; letter-spacing:-.01em;}
+
+  .page-footer{
+    position:absolute; left:60px; right:60px; bottom:40px;
+    display:flex; justify-content:space-between; font-size:9.5px;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint);
+  }
+  .page-footer.on-dark{color:var(--demo-text-soft);}
+
+  /* ---- Cover ---- */
+  .cover-inner{margin-top:auto; margin-bottom:auto;}
+  .cover .eyebrow{color:var(--ink-faint); font-weight:600;}
+  .cover h1{font-size:58px; font-weight:600; letter-spacing:-0.01em;}
+  .cover .tagline{font-family:var(--serif); font-size:23px; color:var(--ink-soft); margin-top:20px; max-width:560px; font-style:italic;}
+  .cover .meta{margin-top:56px; display:flex; flex-direction:column; gap:10px; font-size:12.5px; color:var(--ink-faint);}
+  .cover .meta b{color:var(--ink-soft); font-weight:700; display:inline-block; width:88px;}
+  .cover .rule{height:1px; background:var(--line); margin:40px 0;}
+
+  /* ---- Quote / positioning ---- */
+  .quote-primary{font-family:var(--serif); font-size:27px; line-height:1.42; font-weight:500; margin:4px 0 30px;}
+  .quote-alts{display:flex; flex-direction:column; gap:12px;}
+  .quote-alt{display:flex; gap:12px; align-items:baseline; font-family:var(--serif); font-size:15px; color:var(--ink-soft);}
+  .quote-alt .tag{font-family:var(--sans); font-size:10.5px; letter-spacing:.06em; color:var(--ink-faint); border:1px solid var(--line); border-radius:100px; padding:2px 8px; flex:none;}
+
+  /* ---- Contrast ---- */
+  .contrast{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:34px;}
+  .contrast .col{padding:24px 22px;}
+  .contrast .not{background:var(--bg-sunken);}
+  .contrast .is{background:var(--accent-soft);}
+  .contrast h3{font-family:var(--sans); font-size:11px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:16px; color:var(--ink-faint);}
+  .contrast .is h3{color:var(--accent-deep);}
+  .contrast ul{list-style:none; display:flex; flex-direction:column; gap:12px;}
+  .contrast li b{display:block; font-weight:700; margin-bottom:2px; font-size:13.5px;}
+  .contrast .not li b{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--ink-faint);}
+  .contrast .is li b{color:var(--ink);}
+  .contrast li span{font-size:12px; color:var(--ink-faint);}
+  .diff-note{font-size:13.5px; color:var(--ink-soft); padding-left:16px; border-left:2px solid var(--line);}
+
+  /* ---- Voice list ---- */
+  .voice-list{list-style:none; display:flex; flex-direction:column;}
+  .voice-list li{display:grid; grid-template-columns:26px 1fr; gap:14px; padding:18px 0; border-top:1px solid var(--line);}
+  .voice-list li:first-child{border-top:none; padding-top:4px;}
+  .voice-list .n{font-family:var(--serif); font-style:italic; color:var(--accent); font-size:16px;}
+  .voice-list .t{font-weight:700; margin-bottom:3px; font-size:14.5px;}
+  .voice-list .d{font-size:12.5px; color:var(--ink-faint);}
+
+  /* ---- Stage grid (system) ---- */
+  .stage-intro{font-family:var(--serif); font-size:17px; font-style:italic; color:var(--ink-soft); margin-bottom:8px;}
+  .stages-wrap{margin:auto 0; display:flex; flex-direction:column; gap:0;}
+  .stages{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .stage{background:var(--bg-raised); padding:30px 26px;}
+  .stage .num{font-family:var(--serif); font-size:12px; color:var(--accent-deep); letter-spacing:.05em;}
+  .stage .name{font-family:var(--serif); font-size:22px; font-weight:700; margin:8px 0 12px;}
+  .stage .ask{font-size:13.5px; font-style:italic; color:var(--ink-soft); margin-bottom:12px; font-family:var(--serif);}
+  .stage .maps{font-size:11.5px; color:var(--ink-faint); letter-spacing:.02em; text-transform:uppercase;}
+
+  /* ---- Landing structure cards ---- */
+  .lp-list{display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .lp-card{background:var(--bg-raised); display:grid; grid-template-columns:104px 1fr; gap:22px; padding:24px 24px;}
+  .lp-card.demo-dark{background:var(--demo-bg); color:var(--demo-text);}
+  .lp-card.demo-dark .lp-purpose,.lp-card.demo-dark .lp-copy-label{color:var(--demo-text-soft);}
+  .lp-card.demo-dark .lp-title{color:var(--demo-text);}
+  .lp-card.demo-dark .lp-copy{color:var(--demo-accent);}
+  .lp-thumb{height:78px; background:linear-gradient(135deg,var(--bg-sunken),var(--line)); position:relative;}
+  .lp-thumb span{position:absolute; inset:auto 6px 6px 6px; font-size:8.5px; letter-spacing:.03em; color:var(--ink-faint); text-transform:uppercase; line-height:1.3;}
+  .lp-num{font-family:var(--serif); font-size:11px; color:var(--accent-deep); letter-spacing:.05em; display:block; margin-bottom:5px;}
+  .lp-title{font-family:var(--serif); font-size:16.5px; font-weight:700; margin-bottom:8px;}
+  .lp-purpose{font-size:12px; color:var(--ink-faint); margin-bottom:9px;}
+  .lp-copy-label{font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:3px;}
+  .lp-copy{font-family:var(--serif); font-style:italic; font-size:14px; color:var(--accent-deep);}
+
+  /* ---- Copy before/after ---- */
+  .ba-list{display:flex; flex-direction:column; gap:18px;}
+  .ba{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .ba .before,.ba .after{padding:18px 20px;}
+  .ba .before{background:var(--bg-sunken);}
+  .ba .after{background:var(--bg-raised); border-left:3px solid var(--accent);}
+  .ba .lbl{font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:7px; display:block;}
+  .ba .before p{color:var(--ink-faint); text-decoration:line-through; text-decoration-color:var(--ink-faint); font-size:13px;}
+  .ba .after p{font-family:var(--serif); font-size:14.5px; font-style:italic;}
+
+  /* ---- Design tokens ---- */
+  .swatches{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:38px;}
+  .swatch{width:118px;}
+  .swatch .chip{height:64px; border:1px solid var(--line); margin-bottom:7px;}
+  .swatch .name{font-size:11.5px; font-weight:700;}
+  .swatch .hex{font-size:10px; color:var(--ink-faint);}
+  .type-sample{margin-bottom:38px;}
+  .type-sample .cap{font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-deep); margin-bottom:8px;}
+  .type-sample .h{font-family:var(--serif); font-size:25px; margin-bottom:16px;}
+  .type-sample .p{font-size:13.5px; color:var(--ink-soft); max-width:560px; margin-bottom:16px;}
+  .principle-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .principle{padding:18px 20px; background:var(--bg-raised); border:1px solid var(--line);}
+  .principle .t{font-weight:700; margin-bottom:5px; font-size:13.5px;}
+  .principle .d{font-size:12px; color:var(--ink-faint);}
+
+  /* ---- Image mood ---- */
+  .mood-bar{height:56px; margin-bottom:8px; background:linear-gradient(100deg,#2c2410 0%, #8A6B2F 45%, #d8cba4 100%);}
+  .mood-note{font-size:12px; color:var(--ink-faint); margin-bottom:30px;}
+  .mood-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;}
+  .mood-item{background:var(--bg-raised); border:1px solid var(--line); padding:15px;}
+  .mood-item .k{font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-deep); margin-bottom:7px;}
+  .mood-item .v{font-size:11.5px; color:var(--ink-soft); line-height:1.5;}
+
+  /* ---- CTA demo page ---- */
+  .page.cta-page{background:var(--demo-bg); color:var(--demo-text); text-align:center; justify-content:center; align-items:center;}
+  .cta-page .eyebrow{color:var(--demo-text-soft);}
+  .cta-page h2{color:var(--demo-text); font-size:34px; margin-bottom:16px; max-width:520px;}
+  .cta-page .sub{color:var(--demo-text-soft); font-size:14px; margin-bottom:28px;}
+  .cta-page .btn{display:inline-block; padding:13px 30px; background:var(--demo-accent); color:#1a1400; font-weight:700; font-size:13.5px;}
+
+  /* ---- Next steps ---- */
+  .next-steps ol{list-style:none; counter-reset:step; display:flex; flex-direction:column; gap:16px; max-width:560px;}
+  .next-steps li{counter-increment:step; display:flex; gap:14px; font-size:13.5px; color:var(--ink-soft);}
+  .next-steps li::before{content:counter(step); font-family:var(--serif); font-style:italic; color:var(--accent-deep); flex:none; width:20px;}
+  .sign-block{margin-top:auto; padding-top:40px; border-top:1px solid var(--line); font-size:11.5px; color:var(--ink-faint);}
+
+  @media print{
+    body{background:#fff;}
+    .deck{gap:0; padding:0;}
+    .page{page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <div class="page" id="page-01" data-name="01-cover">
+    <div class="cover-inner">
+      <p class="eyebrow">BRAND &amp; LANDING STRATEGY PROPOSAL</p>
+      <h1>나우모아애드</h1>
+      <p class="tagline">전문가의 이름이, 브랜드가 되는 순간을 설계합니다.</p>
+      <div class="rule"></div>
+      <div class="meta">
+        <div><b>제안 범위</b> 브랜드 전략 · 랜딩페이지 구조 · 카피 방향 · 디자인 방향 · 이미지 컨셉</div>
+        <div><b>상태</b> 구현 전 검토용</div>
+        <div><b>작성일</b> 2026.08.04</div>
+      </div>
+    </div>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>01 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-02" data-name="02-positioning">
+    <p class="eyebrow">01 · 브랜드 전략</p>
+    <h2 class="title">포지셔닝</h2>
+    <p class="lede">홈페이지 제작사도, 광고대행사도, AI 툴 회사도 아닙니다. 전문가 개인의 이름을 브랜드로 만드는 회사입니다.</p>
+    <p class="quote-primary">&ldquo;우리는 광고를 만들지 않습니다.<br>검색되고, 신뢰받고, 선택받는 전문가를 만듭니다.&rdquo;</p>
+    <div class="quote-alts">
+      <div class="quote-alt"><span class="tag">대안 B</span><span>당신의 실력은 이미 충분합니다. 아직 브랜드가 되지 않았을 뿐입니다.</span></div>
+      <div class="quote-alt"><span class="tag">대안 C</span><span>홈페이지, 블로그, 유튜브 — 결과물이 아니라 브랜드로 가는 과정입니다.</span></div>
+    </div>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>02 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-03" data-name="03-contrast">
+    <p class="eyebrow">01 · 브랜드 전략</p>
+    <h2 class="title">우리가 아닌 것 / 우리인 것</h2>
+    <p class="lede">위치를 명확히 해야, 카피와 디자인이 흔들리지 않습니다.</p>
+    <div class="contrast">
+      <div class="col not">
+        <h3>우리가 아닌 것</h3>
+        <ul>
+          <li><b>홈페이지 제작사</b><span>사이트를 완성하고 떠나는 곳</span></li>
+          <li><b>광고대행사</b><span>광고비가 멈추면 존재도 멈추는 곳</span></li>
+          <li><b>AI 마케팅 툴</b><span>자동화된 콘텐츠를 찍어내는 곳</span></li>
+        </ul>
+      </div>
+      <div class="col is">
+        <h3>우리인 것</h3>
+        <ul>
+          <li><b>퍼스널브랜딩 회사</b><span>이름이 곧 신뢰가 되게 만드는 곳</span></li>
+          <li><b>장기 자산 설계</b><span>광고를 꺼도 검색되는 구조를 만드는 곳</span></li>
+          <li><b>사람이 만들고 AI가 이해</b><span>기술은 수단, 목적은 신뢰</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="diff-note">스타트로이어(변호사)와 세이프마케팅(병원)은 업종 특화 마케팅 대행에 가깝습니다. 나우모아애드는 업종을 가리지 않고 &ldquo;전문가 개인의 브랜드&rdquo;를 만드는 데 집중합니다 — 업종 대행사가 아니라 퍼스널브랜딩 에이전시라는 위치가 차별점입니다.</p>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>03 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-04" data-name="04-voice">
+    <p class="eyebrow">01 · 브랜드 전략</p>
+    <h2 class="title">브랜드 보이스 원칙</h2>
+    <p class="lede">모든 카피는 이 5가지 기준으로 검증합니다.</p>
+    <ul class="voice-list">
+      <li><span class="n">1</span><div><div class="t">설명하지 않고, 상태를 보여준다</div><div class="d">&ldquo;SEO를 제공합니다&rdquo; 대신 &ldquo;검색되지 않으면, 존재하지 않습니다&rdquo;</div></div></li>
+      <li><span class="n">2</span><div><div class="t">서비스보다 심리를 먼저 말한다</div><div class="d">기능이 아니라 불안과 기대를 먼저 건드린다</div></div></li>
+      <li><span class="n">3</span><div><div class="t">문장은 짧게, 여백은 길게</div><div class="d">한 문장에 한 생각만 담는다</div></div></li>
+      <li><span class="n">4</span><div><div class="t">확신 있게, 과장하지 않게</div><div class="d">&ldquo;1위 보장&rdquo; 같은 광고 문구를 쓰지 않는다</div></div></li>
+      <li><span class="n">5</span><div><div class="t">전문가를 낮추지 않는다</div><div class="d">이미 실력이 있다는 전제에서 시작한다</div></div></li>
+    </ul>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>04 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-05" data-name="05-system">
+    <p class="eyebrow">02 · 퍼스널브랜딩 시스템</p>
+    <h2 class="title">서비스를 나열하지 않습니다</h2>
+    <p class="stage-intro">브랜드가 만들어지는 순서를 보여줍니다.</p>
+    <div class="stages-wrap">
+      <div class="stages">
+        <div class="stage"><span class="num">01</span><div class="name">발견</div><p class="ask">&ldquo;검색했을 때, 존재해야 합니다.&rdquo;</p><p class="maps">홈페이지 · SEO 기반 구조</p></div>
+        <div class="stage"><span class="num">02</span><div class="name">신뢰</div><p class="ask">&ldquo;찾아냈을 때, 믿어야 합니다.&rdquo;</p><p class="maps">블로그 · 유튜브 · 인스타그램</p></div>
+        <div class="stage"><span class="num">03</span><div class="name">이해</div><p class="ask">&ldquo;AI에게 물었을 때, 정확히 나와야 합니다.&rdquo;</p><p class="maps">AEO · GEO 구조 설계</p></div>
+        <div class="stage"><span class="num">04</span><div class="name">선택</div><p class="ask">&ldquo;비교했을 때, 망설임 없이 선택해야 합니다.&rdquo;</p><p class="maps">언론홍보 · 브랜드 누적</p></div>
+      </div>
+    </div>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>05 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-06" data-name="06-structure-1">
+    <p class="eyebrow">03 · 랜딩페이지 구조</p>
+    <h2 class="title">7개 섹션, 한 페이지 — 1/2</h2>
+    <p class="lede">길게 만들지 않습니다. 각 섹션은 하나의 역할만 맡습니다.</p>
+    <div class="lp-list">
+      <div class="lp-card">
+        <div class="lp-thumb"><span>이미지 70 · 텍스트 30</span></div>
+        <div><span class="lp-num">01</span><div class="lp-title">Hero</div><p class="lp-purpose">3초 안에 &ldquo;이 회사는 다르다&rdquo;는 인상을 준다.</p><p class="lp-copy-label">카피 방향</p><p class="lp-copy">검색되지 않으면, 존재하지 않습니다.</p></div>
+      </div>
+      <div class="lp-card">
+        <div class="lp-thumb"><span>텍스트 중심 · 상징 이미지</span></div>
+        <div><span class="lp-num">02</span><div class="lp-title">퍼스널브랜딩이 필요한 이유</div><p class="lp-purpose">방문자의 불안을 정확히 짚는다. 단정형 문장 3개.</p><p class="lp-copy-label">카피 방향</p><p class="lp-copy">광고를 껐더니, 검색결과에서 사라졌습니다.</p></div>
+      </div>
+      <div class="lp-card">
+        <div class="lp-thumb"><span>다이어그램 · 사진 최소화</span></div>
+        <div><span class="lp-num">03</span><div class="lp-title">퍼스널브랜딩 시스템</div><p class="lp-purpose">4단계 다이어그램. 방법론을 신뢰감 있게 제시.</p><p class="lp-copy-label">카피 방향</p><p class="lp-copy">발견 · 신뢰 · 이해 · 선택 — 동사가 아니라 상태로.</p></div>
+      </div>
+      <div class="lp-card">
+        <div class="lp-thumb"><span>UI 목업 80 · 텍스트 20</span></div>
+        <div><span class="lp-num">04</span><div class="lp-title">서비스</div><p class="lp-purpose">7개를 상품 목록이 아니라 브랜드 접점으로.</p><p class="lp-copy-label">카피 방향</p><p class="lp-copy">서비스명 아래엔 &ldquo;왜 필요한지&rdquo; 한 줄만.</p></div>
+      </div>
+    </div>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>06 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-07" data-name="07-structure-2">
+    <p class="eyebrow">03 · 랜딩페이지 구조</p>
+    <h2 class="title">7개 섹션, 한 페이지 — 2/2</h2>
+    <p class="lede">&nbsp;</p>
+    <div class="lp-list">
+      <div class="lp-card">
+        <div class="lp-thumb"><span>이미지 그리드 · 톤 통일</span></div>
+        <div><span class="lp-num">05</span><div class="lp-title">전문직 분야</div><p class="lp-purpose">병원 · 변호사 · 세무사 · 부동산 · 기타. 업종 이해도 신뢰.</p><p class="lp-copy-label">카피 방향</p><p class="lp-copy">실력은 소문나지 않습니다. 설계되어야 합니다.</p></div>
+      </div>
+      <div class="lp-card demo-dark">
+        <div class="lp-thumb" style="background:linear-gradient(135deg,#232414,#14150d)"><span style="color:#8e8c78">다크 전환 · 톤 무게감</span></div>
+        <div><span class="lp-num" style="color:var(--demo-accent)">06</span><div class="lp-title">Why NowMoaAd</div><p class="lp-purpose">후기 남발 대신 선언문 톤의 1인칭 문단. 다크로 전환해 무게감.</p><p class="lp-copy-label">카피 방향</p><p class="lp-copy">우리는 광고를 켜고 끄는 회사가 아닙니다. 이름을 남기는 회사입니다.</p></div>
+      </div>
+      <div class="lp-card">
+        <div class="lp-thumb"><span>여백 최대 · 버튼 하나</span></div>
+        <div><span class="lp-num">07</span><div class="lp-title">CTA</div><p class="lp-purpose">무료 브랜드 진단 신청. 이름 · 연락처 · 분야, 3개 입력.</p><p class="lp-copy-label">카피 방향</p><p class="lp-copy">&ldquo;진단&rdquo;이라는 단어로 검사받는다는 부담을 낮춘다.</p></div>
+      </div>
+    </div>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>07 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-08" data-name="08-copy">
+    <p class="eyebrow">04 · 카피 방향</p>
+    <h2 class="title">설명하지 않는다</h2>
+    <p class="lede">AI가 쓴 것 같은 문장을 금지합니다. 기능 설명 대신 심리를 건드리는 한 문장.</p>
+    <div class="ba-list">
+      <div class="ba">
+        <div class="before"><span class="lbl">금지 — 설명형</span><p>저희는 전문적인 SEO 서비스를 제공합니다.</p></div>
+        <div class="after"><span class="lbl">지향 — 심리형</span><p>검색되지 않는 전문가는, 없는 전문가입니다.</p></div>
+      </div>
+      <div class="ba">
+        <div class="before"><span class="lbl">금지 — 설명형</span><p>블로그와 유튜브 채널을 운영해드립니다.</p></div>
+        <div class="after"><span class="lbl">지향 — 심리형</span><p>진료실에 있는 동안에도, 당신의 이름은 신뢰를 쌓습니다.</p></div>
+      </div>
+      <div class="ba">
+        <div class="before"><span class="lbl">금지 — 설명형</span><p>AI 검색 최적화를 지원합니다.</p></div>
+        <div class="after"><span class="lbl">지향 — 심리형</span><p>AI에게 물어봤을 때, 당신의 이름이 나와야 합니다.</p></div>
+      </div>
+    </div>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>08 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-09" data-name="09-design">
+    <p class="eyebrow">05 · 디자인 방향</p>
+    <h2 class="title">화이트, 여백, 그리고 브라스</h2>
+    <p class="lede">Apple · Stripe · Linear · Framer의 미니멀함에서 SaaS 느낌을 걷어내고, 전문직 사무실의 신뢰감을 더합니다.</p>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#F3F2ED"></div><div class="name">Stone</div><div class="hex">#F3F2ED</div></div>
+      <div class="swatch"><div class="chip" style="background:#16180F"></div><div class="name">Signature Ink</div><div class="hex">#16180F</div></div>
+      <div class="swatch"><div class="chip" style="background:#8A6B2F"></div><div class="name">Brass</div><div class="hex">#8A6B2F</div></div>
+      <div class="swatch"><div class="chip" style="background:#EDE3CC"></div><div class="name">Brass Tint</div><div class="hex">#EDE3CC</div></div>
+      <div class="swatch"><div class="chip" style="background:#DCDACD;border:1px solid #c9c7ba"></div><div class="name">Hairline</div><div class="hex">#DCDACD</div></div>
+    </div>
+    <div class="type-sample">
+      <p class="cap">Display · Serif</p>
+      <p class="h">검색되지 않으면, 존재하지 않습니다.</p>
+      <p class="cap">Body · Sans</p>
+      <p class="p">본문은 시스템 산세리프로 담백하게. 헤드라인은 세리프로 무게를 준다 — 변호사 명패, 진료실 자격증에 새겨진 이름처럼.</p>
+    </div>
+    <div class="principle-grid">
+      <div class="principle"><div class="t">여백이 먼저</div><div class="d">섹션 간 padding을 넉넉히. 촘촘한 정보 밀도는 신뢰를 깎는다.</div></div>
+      <div class="principle"><div class="t">이미지가 먼저 말한다</div><div class="d">텍스트보다 이미지 비중을 높게.</div></div>
+      <div class="principle"><div class="t">버튼보다 절제</div><div class="d">텍스트 링크형 CTA를 부분적으로 사용.</div></div>
+      <div class="principle"><div class="t">세리프는 아껴 쓴다</div><div class="d">헤드라인에만, 본문은 산세리프로.</div></div>
+    </div>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>09 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-10" data-name="10-image">
+    <p class="eyebrow">06 · 이미지 컨셉</p>
+    <h2 class="title">다른 출처의 사진도, 하나의 브랜드처럼</h2>
+    <p class="lede">Unsplash · Pexels · Pixabay를 활용하되, 동일한 색보정으로 톤을 통일합니다.</p>
+    <div class="mood-bar"></div>
+    <p class="mood-note">모든 사진에 동일한 브라스 톤 듀오톤 오버레이 — 출처가 달라도 같은 브랜드로 읽히게 한다.</p>
+    <div class="mood-grid">
+      <div class="mood-item"><div class="k">인물 사진</div><div class="v">자연광 속 살짝 비스듬한 시선의 확신</div></div>
+      <div class="mood-item"><div class="k">서비스 섹션</div><div class="v">UI 목업 6종 — 홈페이지·블로그·유튜브·인스타·AI챗·언론</div></div>
+      <div class="mood-item"><div class="k">전문직 분야</div><div class="v">병원·법률·세무·부동산, 동일 보정으로 통일</div></div>
+      <div class="mood-item"><div class="k">시스템 다이어그램</div><div class="v">사진이 아니라 그래픽 — 선과 도형</div></div>
+      <div class="mood-item"><div class="k">Why 섹션</div><div class="v">건축적·구조적 느낌의 흑백/다크 이미지</div></div>
+      <div class="mood-item"><div class="k">소싱 방식</div><div class="v">실제 소싱·목업 제작은 승인 후 진행</div></div>
+    </div>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>10 / 12</span></div>
+  </div>
+
+  <div class="page cta-page" id="page-11" data-name="11-cta">
+    <p class="eyebrow">07 · CTA 미리보기</p>
+    <h2>무료 브랜드 진단,<br>지금 신청하세요</h2>
+    <p class="sub">이름 · 연락처 · 분야 — 3개만 남기면 됩니다.</p>
+    <span class="btn">브랜드 진단 신청하기</span>
+    <div class="page-footer on-dark"><span>NOWMOAAD BRAND PROPOSAL</span><span>11 / 12</span></div>
+  </div>
+
+  <div class="page" id="page-12" data-name="12-next-steps">
+    <p class="eyebrow">다음 단계</p>
+    <h2 class="title" style="margin-bottom:28px;">승인 이후 진행 순서</h2>
+    <div class="next-steps">
+      <ol>
+        <li>섹션별 실제 카피 확정 — 여기 있는 예시 문장을 다듬어 최종본으로</li>
+        <li>이미지 소싱 &amp; UI 목업 제작 — Unsplash/Pexels 셀렉 + 서비스 목업 6종</li>
+        <li>디자인 시스템 상세화 — 컴포넌트, 반응형, 인터랙션 디테일</li>
+        <li>랜딩페이지 개발 &amp; 진단 신청 폼 연동</li>
+      </ol>
+    </div>
+    <div class="sign-block">나우모아애드 · 브랜드 &amp; 랜딩페이지 전략 제안서</div>
+    <div class="page-footer"><span>NOWMOAAD BRAND PROPOSAL</span><span>12 / 12</span></div>
+  </div>
+
+</div>
+</body>
+</html>
