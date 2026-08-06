@@ -96,16 +96,66 @@
   .problem .line.two{gap:2px;}
   @media (max-width:860px){.problem{grid-template-columns:1fr;} .problem .photo{height:46vh; min-height:300px;} .problem .side{padding:56px 26px;} .problem .lines{gap:30px;}}
 
+  /* ---- Artifact primitives (real-marketing proof units) ---- */
+  .art{background:var(--white); border:1px solid var(--line);}
+  .art-photo{position:relative; overflow:hidden; background:#101008;}
+  .art-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .art-photo.sq{aspect-ratio:1/1;}
+  .art-photo.tall{aspect-ratio:9/16;}
+  .art-photo .dur{position:absolute; right:8px; bottom:8px; font-size:9px; color:#fff; background:rgba(17,19,15,.75); padding:2px 6px; border-radius:2px; letter-spacing:.02em; font-weight:600;}
+  .art-photo .scrub{position:absolute; left:8px; right:8px; bottom:12px; height:2px; background:rgba(255,255,255,.35);}
+  .art-photo .scrub::after{content:''; position:absolute; left:22%; top:-3px; width:8px; height:8px; border-radius:50%; background:#fff;}
+  .art-photo .cap{position:absolute; left:0; right:0; bottom:0; padding:16px; color:#fff; background:linear-gradient(0deg, rgba(10,10,8,.88) 0%, rgba(10,10,8,.35) 60%, rgba(10,10,8,0) 100%);}
+  .art-photo .cap .k{font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-light); font-weight:700; margin-bottom:6px;}
+  .art-photo .cap .v{font-size:13px; font-weight:700; line-height:1.4;}
+  .art-photo.featured .cap .v{font-size:16px;}
+
+  .art-note{padding:16px; aspect-ratio:1/1; display:flex; flex-direction:column; gap:9px; justify-content:center;}
+  .art-note .ln{height:6px; background:var(--sunken); border-radius:1px;}
+  .art-note .ln.w1{width:88%;} .art-note .ln.w2{width:64%;} .art-note .ln.w3{width:76%;}
+  .art-note .chk{display:flex; align-items:center; gap:8px; margin-top:8px;}
+  .art-note .chk i{width:12px; height:12px; border:1.4px solid var(--accent); border-radius:2px; flex:none; display:block;}
+  .art-note .chk span{font-size:10px; color:var(--ink-faint); font-weight:600;}
+
+  .art-blog{padding:12px; aspect-ratio:1/1; display:flex; flex-direction:column; gap:10px;}
+  .art-blog .thumb{width:100%; flex:1; overflow:hidden; background:var(--sunken);}
+  .art-blog .thumb img{width:100%; height:100%; object-fit:cover;}
+  .art-blog .ln{height:6px; background:var(--sunken); border-radius:1px;}
+  .art-blog .ln.w1{width:80%; margin-bottom:6px;} .art-blog .ln.w2{width:50%;}
+
+  .art-press{padding:16px; aspect-ratio:1/1; display:flex; flex-direction:column; justify-content:center;}
+  .art-press .mast{font-size:9px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--ink-faint); border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:10px;}
+  .art-press .head{font-size:13px; font-weight:700; line-height:1.42; color:var(--ink);}
+
+  .art-serp{padding:16px; aspect-ratio:1/1; display:flex; flex-direction:column; justify-content:center; gap:7px;}
+  .art-serp .src{font-size:9px; color:var(--ink-faint); letter-spacing:.02em;}
+  .art-serp .title{font-size:12.5px; font-weight:700; color:var(--accent);}
+  .art-serp .desc{font-size:10.5px; color:var(--ink-soft); line-height:1.5;}
+
+  .art-chat{padding:14px; aspect-ratio:1/1; display:flex; flex-direction:column; justify-content:center; gap:8px;}
+  .art-chat .q{font-size:10px; color:var(--ink-faint); background:var(--sunken); padding:6px 10px; border-radius:10px 10px 2px 10px; align-self:flex-end; text-align:right;}
+  .art-chat .a{font-size:10.5px; color:var(--ink); background:var(--bg); border:1px solid var(--line); padding:8px 10px; border-radius:10px 10px 10px 2px; line-height:1.5;}
+  .art-chat .a b{color:var(--accent);}
+
   /* ---- Channel groups ---- */
   .channels{background:var(--sunken);}
   .chan-groups{display:flex; flex-direction:column;}
-  .chan-row{display:grid; grid-template-columns:1fr 1fr; gap:40px; padding:56px 0; border-top:1px solid var(--line); align-items:start;}
+  .chan-row{display:grid; grid-template-columns:1fr 1fr auto; gap:32px; padding:52px 0; border-top:1px solid var(--line); align-items:center;}
   .chan-row:last-child{border-bottom:1px solid var(--line);}
   .chan-row .label{font-size:clamp(26px,3vw,38px); font-weight:800; letter-spacing:-.02em; color:var(--ink);}
   .chan-row .body{display:flex; flex-direction:column; gap:12px;}
   .chan-row .list{font-size:14.5px; font-weight:700; color:var(--ink); letter-spacing:.005em;}
   .chan-row .desc{font-size:15.5px; color:var(--ink-soft); font-weight:500; line-height:1.6; max-width:440px;}
-  @media (max-width:760px){ .chan-row{grid-template-columns:1fr; gap:14px; padding:40px 0;} }
+  .chan-row .proof{width:128px; flex:none;}
+  @media (max-width:900px){ .chan-row{grid-template-columns:1fr; gap:14px; padding:40px 0;} .chan-row .proof{width:104px;} }
+
+  /* ---- Ecosystem strip ---- */
+  .ecosystem{background:var(--bg); padding:56px 44px; border-bottom:1px solid var(--line);}
+  .ecosystem .wrap{display:flex; flex-wrap:wrap; align-items:baseline; gap:20px 44px;}
+  .ecosystem .label{font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; color:var(--ink-faint); flex:none;}
+  .ecosystem .marks{display:flex; flex-wrap:wrap; gap:14px 34px; flex:1;}
+  .ecosystem .marks span{font-size:14.5px; font-weight:700; letter-spacing:.01em; color:var(--ink-soft); white-space:nowrap;}
+  @media (max-width:640px){ .ecosystem{padding:36px 24px;} .ecosystem .marks{gap:10px 22px;} .ecosystem .marks span{font-size:13px;} }
 
   /* ---- Decision ---- */
   .decision{background:var(--white);}
@@ -118,21 +168,20 @@
   .dq .a .key{color:var(--ink); font-weight:700; border-bottom:1px solid var(--accent); padding-bottom:1px; white-space:nowrap;}
   @media (max-width:760px){ .dq{grid-template-columns:1fr; gap:10px; padding:26px 0;} }
 
-  /* ---- Expand ---- */
-  .flow{display:flex; flex-wrap:wrap; row-gap:14px; margin:8px 0 0;}
-  .flow .step{display:flex; align-items:baseline; gap:14px;}
-  .flow .step .n{font-size:10.5px; font-weight:700; color:var(--accent); letter-spacing:.04em;}
-  .flow .step .t{font-size:15px; font-weight:600; color:var(--ink);}
-  .flow .arrow{color:var(--ink-faint); font-size:14px; margin:0 16px;}
-  @media (max-width:640px){ .flow .arrow{margin:0 10px;} }
-
-  .expand-case{position:relative; margin-top:64px; aspect-ratio:16/7; overflow:hidden;}
-  .expand-case img{filter:saturate(.86) contrast(1.06) brightness(.96);}
-  .expand-case::before{content:''; position:absolute; left:0; right:0; bottom:0; height:65%; background:linear-gradient(0deg, rgba(10,10,8,.82) 0%, rgba(10,10,8,.32) 55%, rgba(10,10,8,0) 100%); pointer-events:none; z-index:1;}
-  .expand-case .tag{position:absolute; left:0; right:0; bottom:0; padding:32px 36px; color:#fff; z-index:2;}
-  .expand-case .tag .k{font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; color:var(--accent-light); margin-bottom:10px;}
-  .expand-case .tag .v{font-size:clamp(20px,2.4vw,30px); font-weight:800; letter-spacing:-.015em; line-height:1.3; max-width:600px;}
-  @media (max-width:640px){ .expand-case{aspect-ratio:4/5;} .expand-case .tag{padding:22px 22px;} }
+  /* ---- Expand: campaign trail ---- */
+  .trail{position:relative; margin-top:56px;}
+  .trail::after{content:''; position:absolute; right:0; top:0; bottom:16px; width:64px; background:linear-gradient(90deg, transparent, var(--bg)); pointer-events:none;}
+  .trail-scroll{overflow-x:auto; padding-bottom:16px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; scrollbar-color:var(--line) transparent;}
+  .trail-scroll::-webkit-scrollbar{height:3px;}
+  .trail-scroll::-webkit-scrollbar-track{background:transparent;}
+  .trail-scroll::-webkit-scrollbar-thumb{background:var(--line); border-radius:2px;}
+  .trail-track{display:flex; gap:26px; width:max-content; position:relative;}
+  .trail-track::before{content:''; position:absolute; left:0; right:0; top:5px; height:1px; background:var(--line); z-index:0;}
+  .trail-item{flex:0 0 156px; position:relative; z-index:1;}
+  .trail-item.featured{flex-basis:236px;}
+  .trail-item .n{display:inline-block; font-size:10px; font-weight:700; color:var(--accent); letter-spacing:.05em; margin-bottom:12px; background:var(--bg); padding-right:8px;}
+  .trail-item .t{font-size:12.5px; font-weight:600; color:var(--ink); margin-top:10px;}
+  @media (max-width:640px){ .trail-track{gap:16px;} .trail-item{flex-basis:126px;} .trail-item.featured{flex-basis:190px;} }
 
   /* ---- Fields grid ---- */
   .fields{padding:0;}
@@ -144,11 +193,12 @@
   .field.f-tax{grid-column:span 2;}
   .field.f-realestate{grid-column:span 2;}
   .field.f-other{grid-column:span 2;}
-  .field::before{content:''; position:absolute; left:0; right:0; bottom:0; height:64%; background:linear-gradient(0deg, rgba(10,10,8,.84) 0%, rgba(10,10,8,.4) 48%, rgba(10,10,8,0) 100%); pointer-events:none; z-index:1;}
+  .field::before{content:''; position:absolute; left:0; right:0; bottom:0; height:66%; background:linear-gradient(0deg, rgba(10,10,8,.86) 0%, rgba(10,10,8,.42) 46%, rgba(10,10,8,0) 100%); pointer-events:none; z-index:1;}
   .field .cap{position:absolute; left:0; right:0; bottom:0; padding:24px 22px; color:#fff; z-index:2;}
   .field .cap .k{font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; color:var(--accent-light); margin-bottom:8px;}
   .field .cap .v{font-size:15px; font-weight:500; line-height:1.5;}
-  .field .cap .tags{margin-top:12px; font-size:11px; letter-spacing:.01em; color:var(--on-dark-soft); line-height:1.7; font-weight:500;}
+  .field .cap .chain{margin-top:13px; display:flex; flex-wrap:wrap; align-items:center; gap:5px 6px; font-size:10.5px; color:var(--on-dark-soft); font-weight:600;}
+  .field .cap .chain .arrow{color:var(--accent-light); font-size:9px;}
   .field.f-hospital img{filter:saturate(.92) contrast(1.02) brightness(1.06);}
   .field.f-lawyer img{filter:saturate(.68) contrast(1.12) brightness(.92);}
   .field.f-tax img{filter:saturate(1) contrast(1.1);}
@@ -258,12 +308,25 @@
           <div class="list">릴스 · 숏츠 · 크리에이터 · 체험단</div>
           <div class="desc">처음 보는 사람에게 브랜드를 알립니다.</div>
         </div>
+        <div class="proof">
+          <div class="art art-photo tall">
+            <img src="assets/img/field-hospital.jpg" alt="" loading="lazy" decoding="async" style="object-position:60% 30%;">
+            <div class="dur">0:31</div>
+          </div>
+        </div>
       </div>
       <div class="chan-row">
         <div class="label">확인하는 곳</div>
         <div class="body">
           <div class="list">네이버 블로그 · 카페 · 후기 · 플레이스 · 언론</div>
           <div class="desc">관심이 생긴 사람이 검색하고 비교하는 곳입니다.</div>
+        </div>
+        <div class="proof">
+          <div class="art art-serp">
+            <div class="src">google.com/search</div>
+            <div class="title">○○ 원장 · 브랜드 프로필</div>
+            <div class="desc">검색 결과 상위 노출</div>
+          </div>
         </div>
       </div>
       <div class="chan-row">
@@ -272,7 +335,23 @@
           <div class="list">AI 콘텐츠 재가공 · AEO · GEO · 해외 크리에이터 · 다국어 콘텐츠</div>
           <div class="desc">만든 콘텐츠를 다른 검색 환경과 다른 시장까지 확장합니다.</div>
         </div>
+        <div class="proof">
+          <div class="art art-chat">
+            <div class="q">이 분야, 어떤 전문가가 좋을까요?</div>
+            <div class="a">이 지역에서는 <b>OOO 원장</b>이 자주 언급됩니다.</div>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="ecosystem">
+  <div class="wrap">
+    <span class="label">플랫폼</span>
+    <div class="marks">
+      <span>NAVER</span><span>NAVER BLOG</span><span>네이버 플레이스</span><span>YouTube</span><span>Instagram</span><span>Threads</span><span>TikTok</span><span>Google</span><span>Google Maps</span><span>ChatGPT</span><span>Perplexity</span>
     </div>
   </div>
 </section>
@@ -313,21 +392,75 @@
       <h2>콘텐츠는 한 번 만들고<br>끝내지 않습니다.</h2>
       <p class="sub">인터뷰 하나가 릴스와 블로그와 기사로 이어집니다.</p>
     </div>
-    <div class="flow reveal">
-      <div class="step"><span class="n">01</span><span class="t">기획안</span></div><span class="arrow">→</span>
-      <div class="step"><span class="n">02</span><span class="t">촬영·인터뷰</span></div><span class="arrow">→</span>
-      <div class="step"><span class="n">03</span><span class="t">세로 영상 편집</span></div><span class="arrow">→</span>
-      <div class="step"><span class="n">04</span><span class="t">릴스·숏츠</span></div><span class="arrow">→</span>
-      <div class="step"><span class="n">05</span><span class="t">블로그</span></div><span class="arrow">→</span>
-      <div class="step"><span class="n">06</span><span class="t">언론 기사</span></div><span class="arrow">→</span>
-      <div class="step"><span class="n">07</span><span class="t">검색 결과</span></div><span class="arrow">→</span>
-      <div class="step"><span class="n">08</span><span class="t">해외 콘텐츠</span></div>
-    </div>
-    <div class="expand-case reveal">
-      <div class="photo"><img src="assets/img/problem.jpg" alt="" loading="lazy" decoding="async"></div>
-      <div class="tag">
-        <div class="k">촬영형 콘텐츠 사례</div>
-        <div class="v">촬영 한 번으로,<br>한 달의 콘텐츠를 만듭니다.</div>
+    <div class="trail reveal">
+      <div class="trail-scroll">
+      <div class="trail-track">
+        <div class="trail-item">
+          <span class="n">01</span>
+          <div class="art art-note">
+            <div class="ln w1"></div><div class="ln w2"></div><div class="ln w3"></div>
+            <div class="chk"><i></i><span>기획 완료</span></div>
+          </div>
+          <div class="t">기획안</div>
+        </div>
+        <div class="trail-item featured">
+          <span class="n">02</span>
+          <div class="art art-photo sq featured">
+            <img src="assets/img/hero-space.jpg" alt="" loading="lazy" decoding="async" style="object-position:28% 65%;">
+            <div class="cap"><div class="k">촬영형 콘텐츠 사례</div><div class="v">촬영 한 번으로,<br>한 달의 콘텐츠를 만듭니다.</div></div>
+          </div>
+          <div class="t">촬영 · 인터뷰</div>
+        </div>
+        <div class="trail-item">
+          <span class="n">03</span>
+          <div class="art art-photo tall">
+            <img src="assets/img/problem.jpg" alt="" loading="lazy" decoding="async" style="object-position:75% 35%;">
+            <div class="scrub"></div>
+          </div>
+          <div class="t">세로 영상 편집</div>
+        </div>
+        <div class="trail-item">
+          <span class="n">04</span>
+          <div class="art art-photo tall">
+            <img src="assets/img/why.jpg" alt="" loading="lazy" decoding="async">
+            <div class="dur">0:42</div>
+          </div>
+          <div class="t">릴스 · 숏츠</div>
+        </div>
+        <div class="trail-item">
+          <span class="n">05</span>
+          <div class="art art-blog">
+            <div class="thumb"><img src="assets/img/field-other.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="ln w1"></div><div class="ln w2"></div>
+          </div>
+          <div class="t">블로그</div>
+        </div>
+        <div class="trail-item">
+          <span class="n">06</span>
+          <div class="art art-press">
+            <div class="mast">Press Release</div>
+            <div class="head">"○○ 분야, 신뢰할 수 있는 전문가로 선정"</div>
+          </div>
+          <div class="t">언론 기사</div>
+        </div>
+        <div class="trail-item">
+          <span class="n">07</span>
+          <div class="art art-serp">
+            <div class="src">google.com/search</div>
+            <div class="title">○○ 원장 — 나우모아애드로 진단받은 브랜드</div>
+            <div class="desc">검색 결과 상위 노출</div>
+          </div>
+          <div class="t">검색 결과</div>
+        </div>
+        <div class="trail-item">
+          <span class="n">08</span>
+          <div class="art art-photo sq">
+            <img src="assets/img/field-realestate.jpg" alt="" loading="lazy" decoding="async">
+            <div class="cap"><div class="k">Global</div><div class="v">다국어 자막 대응</div></div>
+          </div>
+          <div class="t">해외 콘텐츠</div>
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -345,7 +478,13 @@
       <div class="cap">
         <div class="k">병원 · 의료</div>
         <div class="v">환자는 방문하기 전에,<br>병원과 원장의 이름부터 검색합니다.</div>
-        <div class="tags">원장·의료진 신뢰 콘텐츠 · 증상·시술 검색형 블로그 · 후기·플레이스 관리 · 릴스·숏폼 확산 · AI 검색 대응</div>
+        <div class="chain">
+          <span>원장·의료진 신뢰 콘텐츠</span><span class="arrow">→</span>
+          <span>릴스·숏폼 확산</span><span class="arrow">→</span>
+          <span>후기·플레이스 관리</span><span class="arrow">→</span>
+          <span>증상·시술 검색형 블로그</span><span class="arrow">→</span>
+          <span>AI 검색 대응</span>
+        </div>
       </div>
     </div>
     <div class="field large photo f-lawyer">
@@ -353,7 +492,13 @@
       <div class="cap">
         <div class="k">변호사 · 법률</div>
         <div class="v">의뢰인은 상담하기 전에,<br>자신과 비슷한 사건부터 찾아봅니다.</div>
-        <div class="tags">사건·분쟁 검색 콘텐츠 · 대표 변호사 퍼스널 브랜딩 · 언론·블로그 신뢰 콘텐츠 · 유튜브·숏폼 설명 콘텐츠 · AEO·GEO 대응</div>
+        <div class="chain">
+          <span>대표 변호사 퍼스널 브랜딩</span><span class="arrow">→</span>
+          <span>유튜브·숏폼 설명 콘텐츠</span><span class="arrow">→</span>
+          <span>사건·분쟁 검색 콘텐츠</span><span class="arrow">→</span>
+          <span>언론·블로그 신뢰 콘텐츠</span><span class="arrow">→</span>
+          <span>AEO·GEO 대응</span>
+        </div>
       </div>
     </div>
     <div class="field photo f-tax">
@@ -361,7 +506,13 @@
       <div class="cap">
         <div class="k">세무사 · 회계</div>
         <div class="v">신고할 때가 되면,<br>고객은 믿고 맡길 사람부터 찾습니다.</div>
-        <div class="tags">신고 시기별 검색 콘텐츠 · 대표자 전문성 콘텐츠 · 상담 전환형 FAQ · 블로그·숏폼 재가공 · AI 검색 대응</div>
+        <div class="chain">
+          <span>대표자 전문성 콘텐츠</span><span class="arrow">→</span>
+          <span>블로그·숏폼 재가공</span><span class="arrow">→</span>
+          <span>신고 시기별 검색 콘텐츠</span><span class="arrow">→</span>
+          <span>상담 전환형 FAQ</span><span class="arrow">→</span>
+          <span>AI 검색 대응</span>
+        </div>
       </div>
     </div>
     <div class="field photo f-realestate">
@@ -369,7 +520,13 @@
       <div class="cap">
         <div class="k">부동산</div>
         <div class="v">고객은 매물을 보기 전에,<br>누가 소개하는 매물인지 확인합니다.</div>
-        <div class="tags">매물·지역 숏폼 · 지역 블로그·카페 확산 · 후기·플레이스 · 상담 전환 콘텐츠 · 지역 검색 자산</div>
+        <div class="chain">
+          <span>매물·지역 숏폼</span><span class="arrow">→</span>
+          <span>지역 블로그·카페 확산</span><span class="arrow">→</span>
+          <span>후기·플레이스</span><span class="arrow">→</span>
+          <span>지역 검색 자산</span><span class="arrow">→</span>
+          <span>상담 전환 콘텐츠</span>
+        </div>
       </div>
     </div>
     <div class="field photo f-other">
@@ -377,7 +534,13 @@
       <div class="cap">
         <div class="k">기타 전문직</div>
         <div class="v">전문성은 보여주지 않으면,<br>비교의 대상이 되지 못합니다.</div>
-        <div class="tags">대표자 커리어·이력 콘텐츠 · 사례·포트폴리오 콘텐츠 · 후기·소개 기반 확산 · 블로그·SNS 재가공 · AI 검색 대응</div>
+        <div class="chain">
+          <span>대표자 커리어·이력 콘텐츠</span><span class="arrow">→</span>
+          <span>블로그·SNS 재가공</span><span class="arrow">→</span>
+          <span>사례·포트폴리오 콘텐츠</span><span class="arrow">→</span>
+          <span>후기·소개 기반 확산</span><span class="arrow">→</span>
+          <span>AI 검색 대응</span>
+        </div>
       </div>
     </div>
   </div>
