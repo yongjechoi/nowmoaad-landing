@@ -26,7 +26,7 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; word-break:keep-all;}
+  body{margin:0; padding-top:var(--wf-offset); background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; word-break:keep-all;}
   h1,h2,h3{font-family:var(--font); margin:0; text-wrap:balance;}
   p{margin:0;}
   img{display:block; max-width:100%;}
@@ -39,7 +39,7 @@
   .photo::after{content:'';position:absolute; inset:0; background:radial-gradient(ellipse at center, transparent 60%, rgba(10,10,8,.22) 100%); pointer-events:none;}
 
   /* nav */
-  .nav{position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:28px 44px; mix-blend-mode:difference; gap:16px;}
+  .nav{position:fixed; top:var(--wf-offset); left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:28px 44px; mix-blend-mode:difference; gap:16px;}
   .nav .word{font-size:16px; letter-spacing:0; color:#fff; font-weight:700; white-space:nowrap;}
   .nav .link{font-size:12.5px; letter-spacing:.02em; color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.5); padding-bottom:3px; white-space:nowrap; flex:none; font-weight:500;}
   @media (max-width:480px){
@@ -137,6 +137,46 @@
   .art-chat .q{font-size:11px; color:var(--ink-faint); background:var(--sunken); padding:6px 10px; border-radius:10px 10px 2px 10px; align-self:flex-end; text-align:right;}
   .art-chat .a{font-size:12.5px; color:var(--ink); background:var(--bg); border:1px solid var(--line); padding:8px 10px; border-radius:10px 10px 10px 2px; line-height:1.48;}
   .art-chat .a b{color:var(--accent);}
+
+  /* ---- Wireframe asset markers (temporary — remove once real material is placed) ---- */
+  :root{ --flag:#FF7A45; --flag-ink:#FFDCC2; --flag-ink-light:#8A3D14; --wf-offset:0px; }
+  .wf-banner{position:fixed; top:0; left:0; right:0; z-index:300; background:#171009; color:var(--flag-ink); font-size:12px; font-weight:600; letter-spacing:.005em; text-align:center; padding:9px 16px; border-bottom:1px solid var(--flag);}
+  .wf-banner b{color:#FF9A63; font-weight:800;}
+  @media (max-width:640px){ .wf-banner{font-size:10.5px; padding:8px 12px;} }
+
+  .needs-frame{position:relative;}
+  .needs-frame::before{content:''; position:absolute; inset:6px; border:1.5px dashed rgba(255,122,69,.85); z-index:5; pointer-events:none; border-radius:2px;}
+
+  /* overlay badge (absolute, pinned to a photo) */
+  .needs{
+    position:absolute; z-index:6; pointer-events:none;
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:5px 7px;
+    font-family:var(--font); font-size:10.5px; font-weight:600; letter-spacing:.005em; line-height:1.4;
+    background:rgba(18,12,7,.94); color:var(--flag-ink);
+    border:1px solid var(--flag); border-radius:3px;
+    padding:6px 10px; max-width:calc(100% - 20px);
+  }
+  .needs b{font-weight:800; color:#FF9A63; text-transform:uppercase; font-size:9px; letter-spacing:.05em; white-space:nowrap; flex:none;}
+  .needs.light{background:#FFF2E8; color:var(--flag-ink-light); border-color:var(--flag);}
+  .needs.light b{color:#C1501A;}
+  .needs.sm{font-size:9px; padding:4px 7px; gap:3px 5px;}
+  .needs.sm b{font-size:8px;}
+  .needs.tl{top:10px; left:10px;} .needs.tr{top:10px; right:10px;}
+  .needs.bl{bottom:10px; left:10px;} .needs.br{bottom:10px; right:10px;}
+  @media (max-width:640px){ .needs{font-size:9.5px; padding:5px 8px;} .needs b{font-size:8.5px;} .needs.sm{font-size:8.5px; padding:3px 6px;} }
+
+  /* card variant — multi-option scene descriptions, used on large open photos */
+  .needs.card{display:block; max-width:380px;}
+  .needs.card b{display:block; white-space:normal; margin-bottom:8px;}
+  .needs.card ol{margin:0; padding-left:15px; display:flex; flex-direction:column; gap:6px;}
+  .needs.card li{font-size:11.5px; font-weight:500; line-height:1.52;}
+  .needs.hero-mark{top:calc(var(--wf-offset) + 104px); left:44px; right:44px; max-width:420px;}
+  @media (max-width:640px){ .needs.hero-mark{left:24px; right:24px; top:calc(var(--wf-offset) + 90px); max-width:none;} }
+  .needs.problem-mark{top:140px; left:16px; right:16px; max-width:360px;}
+  @media (max-width:860px){ .needs.problem-mark{top:60px; max-width:none;} }
+
+  /* inline variant — sits in normal document flow as a caption, no absolute positioning */
+  .needs.inline{position:static; display:flex; max-width:none; margin-top:9px; pointer-events:auto;}
 
   /* ---- Channel groups ---- */
   .channels{background:var(--sunken);}
@@ -258,15 +298,25 @@
 </head>
 <body>
 
+<div class="wf-banner"><b>WIREFRAME</b> · 자료 삽입 전 최종 와이어프레임 — 주황 점선·라벨이 붙은 자리는 실제 자료로 교체될 예정입니다</div>
+
 <nav class="nav">
   <span class="word">나우모아애드</span>
   <a class="link" href="#cta">무료 브랜드 진단</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero needs-frame">
   <div class="photo"><img src="assets/img/hero-space.jpg" alt="" fetchpriority="high" decoding="async"></div>
   <div class="scrim"></div>
+  <div class="needs card hero-mark">
+    <b>자료 필요 · 3안 중 촬영 가능한 것으로</b>
+    <ol>
+      <li>검은 옷을 입은 디렉터 2명이 대형 모니터 앞에서 콘텐츠를 리뷰하는 장면</li>
+      <li>세로형 릴스 편집 타임라인이 보이는 화면</li>
+      <li>브랜드 전략 문서와 노트북이 함께 있는 회의 장면</li>
+    </ol>
+  </div>
   <div class="content">
     <p class="eyebrow reveal in">브랜드 마케팅</p>
     <h1 class="reveal in">유행은 지나갑니다.<br>이름은 남습니다.</h1>
@@ -283,12 +333,24 @@
 
 <!-- PROBLEM -->
 <section class="problem">
-  <div class="photo">
+  <div class="photo needs-frame">
     <img src="assets/img/problem.jpg" alt="" loading="lazy" decoding="async">
-    <div class="proof art art-serp">
-      <div class="src">google.com/search</div>
-      <div class="title" style="color:var(--ink-faint);">경쟁사 브랜드 · 상위 노출</div>
-      <div class="desc">검색어: 병원 · 의료 전문가</div>
+    <div class="needs card problem-mark">
+      <b>자료 필요 · 2안 중 촬영/캡처 가능한 것으로</b>
+      <ol>
+        <li>네이버 검색창에 실제 원장·대표 이름을 검색 → 경쟁사 블로그·플레이스가 상단을 차지한 결과 화면 전체 캡처</li>
+        <li>검색결과 페이지를 스크롤하는 손·화면 — 상위 3개가 모두 경쟁사인 상태가 보이도록</li>
+      </ol>
+    </div>
+    <div class="proof">
+      <div class="needs inline sm">
+        <b>자료 필요</b><span>실제 구글·네이버 검색결과 캡처 — 검색어 "OO 원장" 입력 시 상단 3개 모두 경쟁사, 의뢰인 브랜드는 미노출인 화면</span>
+      </div>
+      <div class="art art-serp">
+        <div class="src">google.com/search</div>
+        <div class="title" style="color:var(--ink-faint);">경쟁사 브랜드 · 상위 노출</div>
+        <div class="desc">검색어: 병원 · 의료 전문가</div>
+      </div>
     </div>
   </div>
   <div class="side">
@@ -322,6 +384,9 @@
             <img src="assets/img/field-hospital.jpg" alt="" loading="lazy" decoding="async" style="object-position:60% 30%;">
             <div class="dur">0:31</div>
           </div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 게시된 릴스·숏츠 화면 캡처 — 세로 영상 썸네일 + 재생바 + 조회수가 보이는 상태</span>
+          </div>
         </div>
       </div>
       <div class="chan-row">
@@ -336,6 +401,9 @@
             <div class="title">○○ 원장 · 브랜드 프로필</div>
             <div class="desc">검색 결과 상위 노출</div>
           </div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 네이버 통합검색 화면 캡처 — 블로그 리뷰 + 카페 후기 + 플레이스 정보가 함께 노출된 상태</span>
+          </div>
         </div>
       </div>
       <div class="chan-row">
@@ -348,6 +416,9 @@
           <div class="art art-chat">
             <div class="q">이 분야, 어떤 전문가가 좋을까요?</div>
             <div class="a">이 지역에서는 <b>OOO 원장</b>이 자주 언급됩니다.</div>
+          </div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 챗GPT·퍼플렉시티 등 AI 검색창에 지역+분야 질문 입력 후 브랜드명이 답변에 언급된 화면 캡처</span>
           </div>
         </div>
       </div>
@@ -415,6 +486,9 @@
             <div class="chk"><i></i><span>기획 완료</span></div>
           </div>
           <div class="t">기획안</div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 콘텐츠 기획 문서(노션·스프레드시트) 또는 화이트보드에 촬영 일정이 적힌 사진</span>
+          </div>
         </div>
         <div class="trail-item featured">
           <span class="n">02</span>
@@ -423,6 +497,9 @@
             <div class="cap"><div class="k">촬영형 콘텐츠 사례</div><div class="v">촬영 한 번으로,<br>한 달의 콘텐츠를 만듭니다.</div></div>
           </div>
           <div class="t">촬영 · 인터뷰</div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 촬영 현장 — 조명·카메라 장비와 함께 원장·대표가 인터뷰이로 앉아있는 장면</span>
+          </div>
         </div>
         <div class="trail-item">
           <span class="n">03</span>
@@ -431,6 +508,9 @@
             <div class="scrub"></div>
           </div>
           <div class="t">세로 영상 편집</div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 프리미어 프로·캡컷 편집 타임라인 화면 캡처 — 세로형 클립과 자막 트랙이 보이는 상태</span>
+          </div>
         </div>
         <div class="trail-item">
           <span class="n">04</span>
@@ -439,6 +519,9 @@
             <div class="dur">0:42</div>
           </div>
           <div class="t">릴스 · 숏츠</div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 게시된 릴스·숏츠 화면 캡처 — 조회수·댓글 수가 보이는 상태</span>
+          </div>
         </div>
         <div class="trail-item">
           <span class="n">05</span>
@@ -447,6 +530,9 @@
             <div class="ln w1"></div><div class="ln w2"></div>
           </div>
           <div class="t">블로그</div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 네이버 블로그 포스팅 화면 캡처 — 대표 이미지 + 제목 + 본문 일부가 보이는 상태</span>
+          </div>
         </div>
         <div class="trail-item">
           <span class="n">06</span>
@@ -455,6 +541,9 @@
             <div class="head">"○○ 분야, 신뢰할 수 있는 전문가로 선정"</div>
           </div>
           <div class="t">언론 기사</div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 언론 보도 기사 캡처 — 매체명(마스트헤드)과 헤드라인이 보이는 화면</span>
+          </div>
         </div>
         <div class="trail-item">
           <span class="n">07</span>
@@ -464,6 +553,9 @@
             <div class="desc">검색 결과 상위 노출</div>
           </div>
           <div class="t">검색 결과</div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 브랜드명 검색 시 노출되는 결과 화면 캡처 — 캠페인 진행 후 상단 노출 확인용</span>
+          </div>
         </div>
         <div class="trail-item">
           <span class="n">08</span>
@@ -472,6 +564,9 @@
             <div class="cap"><div class="k">Global</div><div class="v">다국어 자막 대응</div></div>
           </div>
           <div class="t">해외 콘텐츠</div>
+          <div class="needs inline sm light">
+            <b>자료 필요</b><span>실제 다국어 자막이 삽입된 영상 화면 캡처 (영어·중국어·일본어 등)</span>
+          </div>
         </div>
       </div>
       </div>
@@ -486,8 +581,9 @@
     <h2>어떤 분야든,<br>이름이 자산이 됩니다.</h2>
   </div>
   <div class="fields-grid reveal" style="margin-top:80px;">
-    <div class="field large photo f-hospital">
+    <div class="field large photo f-hospital needs-frame">
       <img src="assets/img/field-hospital.jpg" alt="병원" loading="lazy" decoding="async">
+      <div class="needs sm tr"><b>자료 필요</b><span>실제 병원 진료실·인테리어에서 원장이 촬영 중인 사진</span></div>
       <div class="cap">
         <div class="k">병원 · 의료</div>
         <div class="v">환자는 방문하기 전에,<br>병원과 원장의 이름부터 검색합니다.</div>
@@ -500,8 +596,9 @@
         </div>
       </div>
     </div>
-    <div class="field large photo f-lawyer">
+    <div class="field large photo f-lawyer needs-frame">
       <img src="assets/img/field-lawyer.jpg" alt="변호사" loading="lazy" decoding="async" style="object-position:38% 50%;">
+      <div class="needs sm tr"><b>자료 필요</b><span>실제 법률사무소 상담 장면 또는 변호사 인물 사진 (서재·법전 배경)</span></div>
       <div class="cap">
         <div class="k">변호사 · 법률</div>
         <div class="v">의뢰인은 상담하기 전에,<br>자신과 비슷한 사건부터 찾아봅니다.</div>
@@ -514,8 +611,9 @@
         </div>
       </div>
     </div>
-    <div class="field photo f-tax">
+    <div class="field photo f-tax needs-frame">
       <img src="assets/img/field-tax.jpg" alt="세무사" loading="lazy" decoding="async" style="object-position:42% 50%;">
+      <div class="needs sm tr"><b>자료 필요</b><span>실제 세무사 사무실 상담 장면 사진 (서류·계산 자료와 함께)</span></div>
       <div class="cap">
         <div class="k">세무사 · 회계</div>
         <div class="v">신고할 때가 되면,<br>고객은 믿고 맡길 사람부터 찾습니다.</div>
@@ -528,8 +626,9 @@
         </div>
       </div>
     </div>
-    <div class="field photo f-realestate">
+    <div class="field photo f-realestate needs-frame">
       <img src="assets/img/field-realestate.jpg" alt="부동산" loading="lazy" decoding="async">
+      <div class="needs sm tr"><b>자료 필요</b><span>실제 매물 현장 또는 중개사 브리핑 장면 사진</span></div>
       <div class="cap">
         <div class="k">부동산</div>
         <div class="v">고객은 매물을 보기 전에,<br>누가 소개하는 매물인지 확인합니다.</div>
@@ -542,8 +641,9 @@
         </div>
       </div>
     </div>
-    <div class="field photo f-other">
+    <div class="field photo f-other needs-frame">
       <img src="assets/img/field-other.jpg" alt="기타 전문직" loading="lazy" decoding="async">
+      <div class="needs sm tr"><b>자료 필요</b><span>실제 해당 전문직 업무 현장 또는 포트폴리오 촬영 사진</span></div>
       <div class="cap">
         <div class="k">기타 전문직</div>
         <div class="v">전문성은 보여주지 않으면,<br>비교의 대상이 되지 못합니다.</div>
@@ -561,8 +661,9 @@
 
 <!-- WHY -->
 <section class="why">
-  <div class="photo"><img src="assets/img/why.jpg" alt="" loading="lazy" decoding="async"></div>
+  <div class="photo needs-frame"><img src="assets/img/why.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="scrim"></div>
+  <div class="needs sm tl"><b>자료 필요</b><span>브랜드가 시간이 지나도 남는다는 인상의 무드 사진 — 오래된 간판·오래 운영된 사무실 등 신뢰·지속성을 보여주는 장면</span></div>
   <div class="content reveal">
     <p class="eyebrow">Why NowMoaAd</p>
     <h2>광고는 껐다 켤 수 있습니다.<br>이름은 그럴 수 없습니다.</h2>
@@ -575,12 +676,15 @@
     <p class="eyebrow">무료 진단</p>
     <h2>당신의 이름을<br>검색해보세요.</h2>
     <p class="sub">광고를 권하기 전에,<br>지금 검색되는 것부터 확인하겠습니다.</p>
-    <div class="cta-search">
+    <div class="cta-search needs-frame">
       <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">google.com/search?q=OOO+원장</span></div>
       <div class="result">
         <div class="rname">OOO 원장 — 나우모아애드로 진단받은 브랜드</div>
         <div class="rdesc">지금 검색 결과에서 어떻게 보이는지, 신청 후 가장 먼저 확인해드립니다.</div>
       </div>
+    </div>
+    <div class="needs inline" style="margin-bottom:28px;">
+      <b>자료 필요</b><span>실제 신청 고객 브랜드명으로 검색한 결과 화면 캡처 — 진단 후 개선된 검색 노출 스크린샷으로 교체</span>
     </div>
     <form id="diagForm">
       <p class="form-hint">이름 · 연락처 · 분야만 남겨주세요.</p>
@@ -609,6 +713,15 @@
 </footer>
 
 <script>
+  var wfBanner = document.querySelector('.wf-banner');
+  if(wfBanner){
+    var setWfOffset = function(){
+      document.documentElement.style.setProperty('--wf-offset', wfBanner.offsetHeight + 'px');
+    };
+    setWfOffset();
+    window.addEventListener('resize', setWfOffset);
+  }
+
   var els = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
