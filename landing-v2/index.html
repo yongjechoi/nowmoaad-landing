@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>나우모아애드 — 상담 전화를 울리는 숏폼 브랜딩</title>
+<meta name="description" content="조회수는 잊으세요. 대표님의 '상담 전화'를 울립니다. 전문직과 사업가의 신뢰도와 권위를 세일즈로 직결시키는 올인원 숏폼 퍼스널 브랜딩 솔루션, 나우모아애드(NowMoaAd).">
+<meta property="og:type" content="website">
+<meta property="og:title" content="나우모아애드 — 상담 전화를 울리는 숏폼 브랜딩">
+<meta property="og:description" content="조회수는 잊으세요. 대표님의 '상담 전화'를 울립니다.">
+<meta property="og:image" content="assets/img/hero-space.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F0F10">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230F0F10'/%3E%3Ctext x='32' y='42' font-family='sans-serif' font-weight='700' font-size='30' fill='%23CCFF00' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --bg:#0F0F10; --bg-alt:#17171C;
+    --card:#16161A; --card-deep:#121216;
+    --line:#2A2A31;
+    --text:#FFFFFF; --text-soft:#9E9EA7; --text-faint:#6B6B72;
+    --accent:#CCFF00; --accent-hover:#B8E600;
+    --font:'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+    --wf-offset:0px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; padding-top:var(--wf-offset); background:var(--bg); color:var(--text); font-family:var(--font); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; word-break:keep-all;}
+  h1,h2,h3{font-family:var(--font); margin:0; text-wrap:balance;}
+  p{margin:0;}
+  img{display:block; max-width:100%;}
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .eyebrow{display:inline-block; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; font-weight:800; color:#0F0F10; background:var(--accent); padding:7px 14px; border-radius:20px; margin:0 0 20px;}
+  .mark{color:var(--accent); font-weight:800;}
+
+  .photo{position:relative; overflow:hidden; background:#101008;}
+  .photo img{width:100%; height:100%; object-fit:cover; filter:saturate(.96) contrast(1.03);}
+
+  /* nav */
+  .nav{position:fixed; top:var(--wf-offset); left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:22px 44px; gap:16px; background:rgba(15,15,16,.62); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,.06);}
+  .nav .word{font-size:16px; letter-spacing:0; color:#fff; font-weight:800; white-space:nowrap;}
+  .nav .link{font-size:12.5px; letter-spacing:.02em; color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:3px; white-space:nowrap; flex:none; font-weight:600;}
+  @media (max-width:480px){
+    .nav{padding:16px 22px; gap:10px;}
+    .nav .word{font-size:13.5px;}
+    .nav .link{font-size:10.5px;}
+  }
+
+  /* reveal */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.16,.8,.3,1), transform .8s cubic-bezier(.16,.8,.3,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;}
+  @media (prefers-reduced-motion:reduce){ .reveal{transition:none; opacity:1; transform:none;} html{scroll-behavior:auto;} }
+
+  /* ---- Hero ---- */
+  .hero{position:relative; min-height:760px; width:100%;}
+  .hero .photo{position:absolute; inset:0;}
+  .hero .photo img{transform:scale(1.05); object-position:62% 40%; filter:saturate(1.05) contrast(1.1) brightness(.85);}
+  .hero .scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,11,.55) 0%, rgba(10,10,11,.15) 28%, rgba(10,10,11,.3) 50%, rgba(10,10,11,.92) 82%, var(--bg) 100%);}
+  .hero .content{position:relative; padding:250px 44px 60px; color:var(--text); max-width:900px;}
+  .hero h1{font-size:clamp(32px,5.6vw,64px); font-weight:800; letter-spacing:-.03em; line-height:1.22; color:#fff;}
+  .hero .desc{font-weight:600; font-size:clamp(14.5px,1.4vw,16.5px); color:var(--text-soft); margin-top:22px; max-width:620px; line-height:1.72;}
+  .hero .desc.offer{color:#E5E7EB; font-weight:500; margin-top:14px;}
+  .hero .desc.offer b{color:#fff; font-weight:800;}
+  .hero .cta{display:inline-flex; align-items:center; gap:8px; margin-top:30px; font-size:14.5px; font-weight:800; letter-spacing:.005em; color:#0F0F10; text-decoration:none; background:var(--accent); padding:16px 26px; border-radius:4px;}
+  .hero .cta:hover{background:var(--accent-hover);}
+  .trust-row{display:flex; flex-wrap:wrap; gap:12px 26px; margin-top:26px;}
+  .trust-row .item{display:flex; align-items:center; gap:7px; font-size:12.5px; font-weight:700; color:var(--text-soft);}
+  .trust-row .item .ck{color:var(--accent); font-weight:800;}
+  @media (max-width:640px){ .hero{min-height:660px;} .hero .content{padding:190px 24px 50px;} }
+
+  /* ---- Section shells ---- */
+  .section{padding:105px 44px;}
+  .section.tight{padding:84px 44px;}
+  .section-head{max-width:760px; margin:0 0 48px;}
+  .section-head h2{font-size:clamp(26px,3.3vw,42px); font-weight:800; letter-spacing:-.025em; line-height:1.32;}
+  .section-head .desc{font-size:15.5px; font-weight:600; color:var(--text-soft); margin-top:18px; line-height:1.68; max-width:580px;}
+  .wrap{max-width:1280px; margin:0 auto;}
+  .wrap.narrow{max-width:1200px;}
+  @media (max-width:640px){
+    .section{padding:88px 24px;}
+    .section.tight{padding:76px 24px;}
+    .section-head{margin-bottom:40px;}
+  }
+
+  /* ---- Top fixed bars: wireframe notice + event alert ---- */
+  :root{ --flag:#FF7A45; --flag-ink:#FFDCC2; }
+  .top-bars{position:fixed; top:0; left:0; right:0; z-index:300;}
+  .wf-banner{background:#171009; color:var(--flag-ink); font-size:12px; font-weight:600; letter-spacing:.005em; text-align:center; padding:9px 16px; border-bottom:1px solid var(--flag);}
+  .wf-banner b{color:#FF9A63; font-weight:800;}
+  .alert-bar{background:var(--accent); color:#0F0F10; text-align:center; padding:12px 16px; font-size:13px; font-weight:800; letter-spacing:.003em; line-height:1.4; border-bottom:1px solid rgba(0,0,0,.15);}
+  @media (max-width:640px){ .wf-banner{font-size:10.5px; padding:8px 12px;} .alert-bar{font-size:11px; padding:10px 14px;} }
+
+  .needs-frame{position:relative;}
+  .needs-frame::before{content:''; position:absolute; inset:6px; border:1.5px dashed rgba(255,122,69,.85); z-index:5; pointer-events:none; border-radius:2px;}
+  .needs{
+    position:absolute; z-index:6; pointer-events:none;
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:5px 7px;
+    font-family:var(--font); font-size:10.5px; font-weight:600; letter-spacing:.005em; line-height:1.4;
+    background:rgba(10,8,6,.92); color:var(--flag-ink);
+    border:1px solid var(--flag); border-radius:3px;
+    padding:6px 10px; max-width:calc(100% - 20px);
+  }
+  .needs b{font-weight:800; color:#FF9A63; text-transform:uppercase; font-size:9px; letter-spacing:.05em; white-space:nowrap; flex:none;}
+  .needs.sm{font-size:9px; padding:4px 7px; gap:3px 5px;}
+  .needs.sm b{font-size:8px;}
+  @media (max-width:640px){ .needs{font-size:9.5px; padding:5px 8px;} .needs b{font-size:8.5px;} .needs.sm{font-size:8.5px; padding:3px 6px;} }
+  .needs.card{display:block; max-width:340px;}
+  .needs.card b{display:block; white-space:normal; margin-bottom:8px;}
+  .needs.card ol{margin:0; padding-left:15px; display:flex; flex-direction:column; gap:6px;}
+  .needs.card li{font-size:11.5px; font-weight:500; line-height:1.52;}
+  .needs.hero-mark{top:calc(var(--wf-offset) + 100px); left:44px; right:44px; max-width:360px;}
+  @media (max-width:640px){ .needs.hero-mark{display:none;} }
+  .needs.inline{position:static; display:flex; max-width:none; margin-top:9px; pointer-events:auto;}
+
+  /* ---- Feature cards (shared) ---- */
+  .fcard-item{padding:18px 0; border-top:1px solid var(--line);}
+  .fcard-item:first-of-type{border-top:none;}
+  .fcard-item .head{display:flex; gap:10px; align-items:flex-start; font-size:16px; font-weight:800; line-height:1.4;}
+  .fcard-item .head .ico{flex:none; font-size:13px; margin-top:3px; font-weight:800;}
+  .fcard-item .body{font-size:13.5px; font-weight:500; color:var(--text-soft); line-height:1.65; padding-left:23px; margin-top:6px;}
+
+  /* ---- Compare (problem & solution) ---- */
+  .compare-section{background:var(--bg-alt);}
+  .compare{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  .compare-col{padding:32px 30px 34px; border-radius:10px;}
+  .compare-col.them{background:var(--card); border:1px solid var(--line);}
+  .compare-col.us{background:var(--card-deep); border:1px solid var(--accent); box-shadow:0 0 0 1px rgba(204,255,0,.1), 0 0 50px -16px rgba(204,255,0,.5);}
+  .compare-col .hd{font-size:12px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; margin-bottom:20px;}
+  .compare-col.them .hd{color:var(--text-faint);}
+  .compare-col.us .hd{color:var(--accent);}
+  .compare-col.them .fcard-item .head{color:#D7D6DB;}
+  .compare-col.them .fcard-item .ico{color:#B5483C;}
+  .compare-col.us .fcard-item .head{color:#fff;}
+  .compare-col.us .fcard-item .ico{color:var(--accent);}
+  .compare-col.them .fcard-item{border-top-color:var(--line);}
+  .compare-col.us .fcard-item{border-top-color:#26261F;}
+  @media (max-width:760px){ .compare{grid-template-columns:1fr;} }
+
+  /* ---- Expertise (4 unified showcase cards) ---- */
+  .position{background:var(--bg);}
+  .showcase-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .show-card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:20px 16px 18px; display:flex; flex-direction:column; align-items:center; gap:14px; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+  .show-card:hover{transform:translateY(-5px); border-color:var(--accent); box-shadow:0 22px 44px -18px rgba(0,0,0,.55), 0 0 0 1px rgba(204,255,0,.35), 0 0 32px -6px rgba(204,255,0,.4);}
+  .show-top{display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center;}
+  .show-badge{font-size:11px; font-weight:800; color:var(--text-soft); background:var(--card-deep); border:1px solid var(--line); border-radius:20px; padding:6px 13px; white-space:nowrap;}
+  .show-strategy{font-size:13.5px; font-weight:800; color:#fff; line-height:1.45;}
+  .show-stat{font-size:11.5px; font-weight:800; color:#0F0F10; background:var(--accent); border-radius:20px; padding:6px 14px; white-space:nowrap;}
+
+  .phone-mock{width:100%; max-width:150px; margin:0 auto; aspect-ratio:9/19; border-radius:22px; border:5px solid #000; overflow:hidden; position:relative; background:#000; box-shadow:0 20px 40px -16px rgba(0,0,0,.65);}
+  .phone-mock img{width:100%; height:100%; object-fit:cover; filter:saturate(.85) contrast(1.1) brightness(.62);}
+  .phone-mock .notch{position:absolute; top:7px; left:50%; transform:translateX(-50%); width:40px; height:10px; background:#000; border-radius:8px; z-index:2;}
+  .phone-mock .cap{position:absolute; left:0; right:0; bottom:0; padding:10px 9px; color:#fff; background:linear-gradient(0deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,0) 100%);}
+  .phone-mock .cap .v{font-size:10.5px; font-weight:800; line-height:1.35; letter-spacing:-.005em;}
+  .phone-mock .needs.sm{position:absolute; top:7px; left:7px; right:7px; z-index:6;}
+
+  @media (max-width:980px){ .showcase-grid{grid-template-columns:repeat(2,1fr); gap:14px;} }
+  @media (max-width:480px){
+    .showcase-grid{gap:9px;}
+    .show-card{padding:13px 10px 12px; gap:10px; border-radius:10px;}
+    .show-badge{font-size:9px; padding:4px 9px;}
+    .show-strategy{font-size:11px;}
+    .show-stat{font-size:9px; padding:4px 9px;}
+    .phone-mock{max-width:100%; border-radius:14px; border-width:4px;}
+    .phone-mock .cap .v{font-size:8.5px;}
+    .phone-mock .notch{width:30px; height:8px; top:5px;}
+  }
+
+  /* ---- Process ---- */
+  .process{background:var(--bg-alt);}
+  .proc-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .proc-item{padding:26px 22px 28px; background:var(--card); border:1px solid var(--line); border-radius:10px;}
+  .proc-num{display:flex; align-items:center; justify-content:center; width:30px; height:30px; font-size:12px; font-weight:800; color:var(--accent); background:var(--card-deep); border:1px solid var(--line); border-radius:50%; margin-bottom:16px;}
+  .proc-t{font-size:14.5px; font-weight:800; color:#fff; line-height:1.5;}
+  .proc-d{font-size:12.5px; font-weight:500; color:var(--text-soft); line-height:1.6; margin-top:8px;}
+  .proc-d em{font-style:normal; color:var(--text-faint);}
+  .proc-disclaimer{margin-top:26px; font-size:11.5px; color:var(--text-faint); font-weight:400; line-height:1.6; max-width:780px;}
+  @media (max-width:900px){ .proc-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .proc-grid{grid-template-columns:1fr;} }
+
+  /* ---- About / Producer Profile ---- */
+  .about{background:var(--bg);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .about-card{background:#16161A; border:1px solid var(--line); border-radius:14px; padding:34px 32px 36px;}
+  .about-card .at{font-size:19px; font-weight:800; color:#fff; letter-spacing:-.005em;}
+  .about-card .as{font-size:13px; font-weight:600; color:var(--text-soft); margin-top:8px; margin-bottom:8px;}
+
+  .tl-item{display:grid; grid-template-columns:76px 1fr; gap:16px; padding:20px 0; border-top:1px solid var(--line);}
+  .tl-item:first-of-type{border-top:none;}
+  .tl-year{font-size:12px; font-weight:800; color:var(--accent); letter-spacing:.02em; padding-top:2px; white-space:nowrap;}
+  .tl-role{font-size:14.5px; font-weight:800; color:#fff; line-height:1.4;}
+  .tl-role .co{display:block; font-weight:600; color:var(--text-faint); font-size:12px; margin-top:3px;}
+  .tl-desc{font-size:12.5px; font-weight:500; color:var(--text-soft); line-height:1.6; margin-top:8px;}
+  .tl-desc .arw{color:var(--accent); font-weight:800;}
+
+  .principle-item{padding:20px 0; border-top:1px solid var(--line);}
+  .principle-item:first-of-type{border-top:none; padding-top:6px;}
+  .principle-item .pnum{font-size:10.5px; font-weight:800; color:var(--accent); letter-spacing:.05em; text-transform:uppercase; margin-bottom:8px;}
+  .principle-item .ptitle{font-size:15.5px; font-weight:800; color:#fff; line-height:1.4;}
+  .principle-item .pdesc{font-size:12.5px; font-weight:500; color:var(--text-soft); line-height:1.65; margin-top:8px;}
+  @media (max-width:900px){ .about-grid{grid-template-columns:1fr;} }
+
+  /* ---- CTA (2-column wide layout) ---- */
+  .cta-section{background:var(--bg); padding:105px 44px;}
+  .cta-wrap{max-width:1200px; margin:0 auto;}
+  .cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .cta-left h2{color:#fff; font-size:clamp(26px,2.9vw,36px); font-weight:800; letter-spacing:-.025em; margin-bottom:18px;}
+  .cta-left .subhead{font-size:16px; font-weight:800; color:#fff; line-height:1.55; margin-bottom:20px;}
+  .cta-left .desc{color:var(--text-soft); font-size:14.5px; font-weight:500; line-height:1.72;}
+  .cta-left .desc p{margin-bottom:10px;}
+  .cta-left .desc p:last-child{margin-bottom:0;}
+
+  .guarantee-list{display:flex; flex-direction:column; gap:12px; margin-top:32px;}
+  .guarantee-item{display:flex; gap:12px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px;}
+  .guarantee-item .gem{flex:none; font-size:15px; margin-top:1px;}
+  .guarantee-item b{display:block; color:#fff; font-weight:800; font-size:13.5px; margin-bottom:4px;}
+  .guarantee-item p{font-size:12.5px; color:var(--text-soft); line-height:1.55;}
+
+  .form-card{background:#16161A; border:1px solid rgba(204,255,0,.3); border-radius:14px; padding:40px;}
+  .form-header{margin-bottom:26px;}
+  .form-header .ft{font-size:20px; font-weight:800; color:#fff;}
+  .form-header .fq{display:flex; align-items:center; gap:6px; margin-top:10px; font-size:12.5px; font-weight:800; color:var(--accent);}
+  .form-row{display:flex; flex-direction:column; gap:14px; text-align:left; margin-bottom:8px;}
+  .form-row input, .form-row select{
+    width:100%; padding:15px 16px; background:var(--card-deep); border:1px solid var(--line); color:#fff;
+    font-family:var(--font); font-size:15px; border-radius:4px;
+  }
+  .form-row input::placeholder{color:#63636B;}
+  .form-row select{color:#d9d6c9;}
+  .submit-btn{
+    width:100%; margin-top:10px; height:56px; background:var(--accent); color:#0F0F10;
+    font-weight:800; font-size:18px; border:none; border-radius:4px; cursor:pointer; letter-spacing:.005em;
+  }
+  .submit-btn:hover{background:var(--accent-hover);}
+  .form-note{margin-top:20px; font-size:11.5px; color:var(--text-faint); font-weight:400; line-height:1.6;}
+  .thanks{display:none; font-size:18px; font-weight:700; color:var(--accent);}
+  @media (max-width:900px){ .cta-grid{grid-template-columns:1fr; gap:40px;} }
+  @media (max-width:640px){ .form-card{padding:22px 20px 24px;} }
+
+  /* ---- Mobile: even 16-20px card padding across components ---- */
+  @media (max-width:640px){
+    .compare-col{padding:20px 18px 22px;}
+    .about-card{padding:20px 18px 22px;}
+    .form-card{padding:20px 18px 22px;}
+    .ops-box{padding:18px 16px; margin:20px 0 26px;}
+    .proc-item{padding:20px 16px 22px;}
+  }
+
+  /* ---- Footer ---- */
+  footer{background:var(--card-deep); color:#8E8E93; padding:36px 44px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; font-size:12px; font-weight:400; letter-spacing:.01em; line-height:1.7;}
+  footer .foot-info p{margin:0;}
+  footer .foot-copyright{white-space:nowrap;}
+  @media (max-width:480px){ footer{padding:22px 22px; font-size:11px; flex-direction:column; align-items:flex-start;} }
+</style>
+</head>
+<body>
+
+<div class="top-bars">
+  <div class="wf-banner"><b>V2 WIREFRAME</b> · 고밀도 리터칭안 — 사진은 임시본이며 스튜디오 촬영/스마트폰 목업으로 교체 예정입니다</div>
+  <div class="alert-bar">🔥 [한정 이벤트] 서로의 방향 검증을 위한 '첫 1편 비용 0원 무료 제작' 지원 (매월 선착순 5개사 심사제)</div>
+</div>
+
+<nav class="nav">
+  <span class="word">나우모아애드</span>
+  <a class="link" href="#cta">0원 무료 영상 신청</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero needs-frame">
+  <div class="photo"><img src="assets/img/hero-space.jpg" alt="" fetchpriority="high" decoding="async"></div>
+  <div class="scrim"></div>
+  <div class="needs card hero-mark">
+    <b>자료 필요 · 스튜디오 톤, 살짝 어둡게</b>
+    <ol>
+      <li>스튜디오 조명 아래 대표님 인터뷰 컷</li>
+      <li>아이폰 화면에 숏폼이 재생 중인 목업</li>
+    </ol>
+  </div>
+  <div class="content">
+    <p class="eyebrow reveal in">PREMIUM SHORT-FORM BRANDING</p>
+    <h1 class="reveal in">알고리즘을 노리지 마세요.<br>대표님의 <span class="mark">'이름값'</span>에 줄 서게 만듭니다.</h1>
+    <p class="desc reveal in d1">유행 따라 춤추거나 가벼운 밈을 쫓지 않아도 됩니다.<br>15년 방송·엔터 PD의 연출력으로 대표님의 전문성을 대체 불가능한 브랜드로 세웁니다.</p>
+    <p class="desc offer reveal in d1">👉 <b>"서로의 결이 맞을 때, 최고의 결과가 나옵니다."</b><br>나우모아애드의 퀄리티를 먼저 확인해 보실 수 있도록, <b>첫 1편을 비용 0원에 무료로 직접 제작</b>해 드립니다.</p>
+    <a class="cta reveal in d2" href="#cta">비용 0원, 첫 1편 무료 제작 신청하기 ↓</a>
+    <div class="trust-row reveal in d3">
+      <span class="item"><span class="ck">✔</span>1:1 맞춤 권위 설계</span>
+      <span class="item"><span class="ck">✔</span>현장 원데이 촬영</span>
+      <span class="item"><span class="ck">✔</span>상담 문의 유입 퍼널</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM & SOLUTION -->
+<section class="section compare-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">WHY NowMoaAd</p>
+      <h2>남들 다 하는 숏폼,<br>왜 대표님 채널만 <span class="mark">문의</span>가 없을까요?</h2>
+      <p class="desc">결제할 고객이 반응하는 숏폼은 만드는 방식부터 완전히 다릅니다.</p>
+    </div>
+    <div class="compare reveal">
+      <div class="compare-col them">
+        <div class="hd">일반 대행사의 한계</div>
+        <div class="fcard-item">
+          <div class="head"><span class="ico">✕</span><span>단순 유행 밈 따라하기</span></div>
+          <div class="body">10대 조회수는 나오지만 실제 유효 문의는 0건</div>
+        </div>
+        <div class="fcard-item">
+          <div class="head"><span class="ico">✕</span><span>대표자의 리소스 낭비</span></div>
+          <div class="body">대본부터 촬영 준비까지 대표님이 직접 고민</div>
+        </div>
+        <div class="fcard-item">
+          <div class="head"><span class="ico">✕</span><span>전문성 훼손</span></div>
+          <div class="body">가벼운 연출로 인해 업종 고유의 신뢰도와 권위 하락</div>
+        </div>
+      </div>
+      <div class="compare-col us">
+        <div class="hd">나우모아애드의 솔루션</div>
+        <div class="fcard-item">
+          <div class="head"><span class="ico">✓</span><span>비즈니스 맞춤형 권위 설계</span></div>
+          <div class="body">대표님의 승소·성공 인사이트를 3초 킬러 콘텐츠로 기획</div>
+        </div>
+        <div class="fcard-item">
+          <div class="head"><span class="ico">✓</span><span>원스톱 올인원 케어</span></div>
+          <div class="body">질문에 답만 하시면 기획부터 촬영 디렉팅, 편집까지 전담</div>
+        </div>
+        <div class="fcard-item">
+          <div class="head"><span class="ico">✓</span><span>세일즈 리드 전환 퍼널</span></div>
+          <div class="body">단순 시청자를 실제 상담 전화와 계약으로 연결</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="section tight position">
+  <div class="wrap narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">INDUSTRY SPECIALIZED</p>
+      <h2>업종마다 고객의 결핍이 다릅니다. <span class="mark">돈이 되는 문법</span>으로 설계합니다.</h2>
+      <p class="desc">단순 노출이 아닌 실제 상담과 결제로 이어지는 업종별 3초 후킹 포트폴리오</p>
+    </div>
+    <div class="showcase-grid reveal">
+      <div class="show-card">
+        <div class="show-top">
+          <span class="show-badge">⚖️ 법무 · 세무</span>
+          <p class="show-strategy">의뢰인의 불안을 타격하는<br>승소 권위 설계</p>
+        </div>
+        <div class="phone-mock needs-frame">
+          <div class="notch"></div>
+          <img src="assets/img/field-lawyer.jpg" alt="" loading="lazy" decoding="async" style="object-position:38% 45%;">
+          <div class="needs sm"><b>자료 필요</b><span>실촬영 숏폼 목업</span></div>
+          <div class="cap"><div class="v">"경찰 출석 전 '이것' 모르면 100% 구속됩니다"</div></div>
+        </div>
+        <span class="show-stat">상담 예약 240% ↑</span>
+      </div>
+
+      <div class="show-card">
+        <div class="show-top">
+          <span class="show-badge">🏢 부동산 · 분양</span>
+          <p class="show-strategy">입지 가치 분석을 통한<br>투자자 신뢰 확보</p>
+        </div>
+        <div class="phone-mock needs-frame">
+          <div class="notch"></div>
+          <img src="assets/img/field-realestate.jpg" alt="" loading="lazy" decoding="async">
+          <div class="needs sm"><b>자료 필요</b><span>실촬영 숏폼 목업</span></div>
+          <div class="cap"><div class="v">"지금 이 지역 갭투자? 90%가 놓치는 치명적 리스크"</div></div>
+        </div>
+        <span class="show-stat">임장 문의 폭증</span>
+      </div>
+
+      <div class="show-card">
+        <div class="show-top">
+          <span class="show-badge">🍔 F&amp;B · 가맹모집</span>
+          <p class="show-strategy">원가율·수익률 증명으로<br>예비 점주 설득</p>
+        </div>
+        <div class="phone-mock needs-frame">
+          <div class="notch"></div>
+          <img src="assets/img/field-other.jpg" alt="" loading="lazy" decoding="async">
+          <div class="needs sm"><b>자료 필요</b><span>실촬영 숏폼 목업</span></div>
+          <div class="cap"><div class="v">"월매출 1억 2천 매장의 '원가율 28%' 비밀"</div></div>
+        </div>
+        <span class="show-stat">가맹 리드 80건+</span>
+      </div>
+
+      <div class="show-card">
+        <div class="show-top">
+          <span class="show-badge">💼 CEO · 퍼스널</span>
+          <p class="show-strategy">대표의 경영 철학을 자산화하는<br>오너 팬덤 구축</p>
+        </div>
+        <div class="phone-mock needs-frame">
+          <div class="notch"></div>
+          <img src="assets/img/hero-space.jpg" alt="" loading="lazy" decoding="async" style="object-position:30% 60%;">
+          <div class="needs sm"><b>자료 필요</b><span>실촬영 숏폼 목업</span></div>
+          <div class="cap"><div class="v">"통장 잔고 300만 원에서 60억 만든 1가지 원칙"</div></div>
+        </div>
+        <span class="show-stat">오너 팬덤 형성</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section tight process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">ALL-IN-ONE SYSTEM</p>
+      <h2>대표님의 본업에만 집중하세요.<br>나머지는 나우모아애드가 <span class="mark">전부 전담</span>합니다.</h2>
+      <p class="desc">체계적인 4단계 시스템으로 대표님의 시간 부담을 획기적으로 줄였습니다.</p>
+    </div>
+    <div class="proc-grid reveal">
+      <div class="proc-item">
+        <span class="proc-num">01</span>
+        <p class="proc-t">1:1 심층 분석 &amp; 스크립트 기획</p>
+        <p class="proc-d">타깃 분석 및 3초 후킹 맞춤 대본 완성</p>
+      </div>
+      <div class="proc-item">
+        <span class="proc-num">02</span>
+        <p class="proc-t">현장 방문 집중 세션 촬영</p>
+        <p class="proc-d">전문 장비 지참 및 1:1 실시간 스피치 디렉팅</p>
+      </div>
+      <div class="proc-item">
+        <span class="proc-num">03</span>
+        <p class="proc-t">숏폼 최적화 고밀도 감각 편집</p>
+        <p class="proc-d">브랜드 톤 맞춤 컷편집, 후킹 자막 및 모션 그래픽</p>
+      </div>
+      <div class="proc-item">
+        <span class="proc-num">04</span>
+        <p class="proc-t">멀티 플랫폼 배포 &amp; 리드 세팅</p>
+        <p class="proc-d">쇼츠·릴스 알고리즘 업로드 및 상담 문의 링크 연결</p>
+      </div>
+    </div>
+    <p class="proc-disclaimer reveal">* 촬영 시간 및 세션 회차는 계약 플랜, 제작 편수, 현장 촬영 환경 및 업종별 콘텐츠 특성에 따라 상호 협의 후 유연하게 조정될 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- ABOUT / PRODUCER PROFILE -->
+<section class="section tight about">
+  <div class="wrap narrow">
+    <div class="section-head reveal">
+      <p class="eyebrow">ABOUT NowMoaAd</p>
+      <h2>방송 연출, 종합 광고, 실전 유통까지—<br><span class="mark">15년의 현장 경험</span>으로 고객의 지갑을 엽니다.</h2>
+      <p class="desc">단순한 영상 편집자가 아닙니다. 메이저 엔터테인먼트 PD의 '시선 장악력',<br>광고대행사의 '브랜딩 전략', 유통 커머스의 '실전 세일즈 심리'를 숏폼 하나에 완벽히 녹여냅니다.</p>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-card">
+        <p class="at">Executive Director Profile</p>
+        <p class="as">"실전 비즈니스와 미디어를 모두 직접 겪어본 전문가"</p>
+
+        <div class="tl-item">
+          <div class="tl-year">2010 ~</div>
+          <div>
+            <p class="tl-role">메이저 방송·엔터테인먼트 PD<span class="co">도레미엔터테인먼트, 팬엔터테인먼트 등</span></p>
+            <p class="tl-desc"><span class="arw">➔</span> 대중을 몰입시키는 감각적 연출 및 카메라 앞 1:1 인터뷰 스피치 디렉팅</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2012 ~</div>
+          <div>
+            <p class="tl-role">종합 광고대행사 대표<span class="co">스탠다드커뮤니케이션</span></p>
+            <p class="tl-desc"><span class="arw">➔</span> 기업과 브랜드의 핵심 가치를 시장에 각인시키는 B2B·B2C 광고 전략</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2016 ~</div>
+          <div>
+            <p class="tl-role">이커머스·유통 브랜드 운영<span class="co">다사주는엄마</span></p>
+            <p class="tl-desc"><span class="arw">➔</span> 소비자의 결제 심리와 전환 알고리즘을 꿰뚫는 실전 세일즈 니즈 파악</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Present</div>
+          <div>
+            <p class="tl-role">나우모아애드(NowMoaAd) 총괄 디렉터</p>
+            <p class="tl-desc"><span class="arw">➔</span> 신뢰가 중요한 전문직·사업가를 위한 매출 직결형 숏폼 퍼스널 브랜딩 전담</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <p class="at">나우모아애드만의 3대 원칙</p>
+        <p class="as">&nbsp;</p>
+
+        <div class="principle-item">
+          <p class="pnum">원칙 01 · Business Understanding</p>
+          <p class="ptitle">업종별 본질 타격</p>
+          <p class="pdesc">법무, 부동산, CEO 등 업종별 수익 구조와 심리 트리거를 정확히 분석합니다.</p>
+        </div>
+        <div class="principle-item">
+          <p class="pnum">원칙 02 · Resource Zero</p>
+          <p class="ptitle">대표자 리소스 제로</p>
+          <p class="pdesc">편하게 답변만 하시면 되는 올인원 제작 시스템입니다.</p>
+        </div>
+        <div class="principle-item">
+          <p class="pnum">원칙 03 · Conversion Pipeline</p>
+          <p class="ptitle">유효 문의 전환</p>
+          <p class="pdesc">단순 10대 조회수를 배제하고, 실제 계약으로 이어지는 프로필 퍼널을 구축합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="cta-wrap">
+    <div class="cta-grid">
+      <div class="cta-left reveal">
+        <p class="eyebrow">100% FREE PROOF (비용 0원)</p>
+        <h2>"왜 비용 0원으로<br><span class="mark">첫 1편</span>을 먼저 만들어 드릴까요?"</h2>
+        <p class="subhead">대표님과 저희의 '방향'이 맞을 때,<br>비로소 최고의 결과가 나오기 때문입니다.</p>
+        <div class="desc">
+          <p>그럴듯한 제안서보다 영상 한 편의 퀄리티로 먼저 증명하겠습니다.</p>
+          <p>직접 결과물을 보시고, 서로의 결이 완벽히 맞을 때만 정식 파트너십을 맺습니다.</p>
+        </div>
+
+        <div class="guarantee-list">
+          <div class="guarantee-item">
+            <span class="gem">💎</span>
+            <div><b>01. 방송 PD 직접 디렉팅</b><p>15년 차 총괄 디렉터가 1:1 맞춤 기획 및 전담 연출</p></div>
+          </div>
+          <div class="guarantee-item">
+            <span class="gem">💎</span>
+            <div><b>02. 계약 강요 Zero</b><p>1편 제작 후 만족하지 않으시면 어떤 추가 비용도 청구하지 않습니다.</p></div>
+          </div>
+          <div class="guarantee-item">
+            <span class="gem">💎</span>
+            <div><b>03. 월 5개사 한정 심사제</b><p>공장형 대량 생산을 배제하고 한정된 파트너만 집중 케어합니다.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-right reveal">
+        <div class="form-card">
+          <div class="form-header">
+            <p class="ft">첫 1편 무료 제작 심사 신청</p>
+            <p class="fq">🔥 현재 8월 잔여 쿼터: 2개사 남음 (선착순 마감)</p>
+          </div>
+          <form id="diagForm">
+            <div class="form-row">
+              <input type="text" placeholder="성함 및 직함 (예: 홍길동 대표 / 변호사)" aria-label="성함 및 직함" autocomplete="name" required>
+              <input type="tel" placeholder="휴대폰 번호 (- 없이 입력)" aria-label="연락처" autocomplete="tel" required>
+              <select required aria-label="업종/분야 선택">
+                <option value="" disabled selected>업종/분야를 선택해주세요</option>
+                <option>법무 · 세무 · 의료 (전문직)</option>
+                <option>부동산 · 분양 · 자산관리</option>
+                <option>프랜차이즈 · 가맹모집 (F&amp;B)</option>
+                <option>기업 CEO · 오너 브랜딩</option>
+                <option>기타 사업체</option>
+              </select>
+              <input type="text" placeholder="인스타/유튜브/웹사이트 URL" aria-label="채널 또는 사이트 링크">
+              <select required aria-label="숏폼으로 달성하고 싶은 핵심 목표">
+                <option value="" disabled selected>숏폼으로 달성하고 싶은 핵심 목표</option>
+                <option>신규 의뢰 / 상담 문의 폭증</option>
+                <option>전문가로서의 신뢰도 및 인지도 확보</option>
+                <option>가맹 계약 및 상품 세일즈</option>
+              </select>
+            </div>
+            <button class="submit-btn" type="submit">비용 0원, 첫 1편 무료 영상 심사 신청하기 →</button>
+          </form>
+          <p class="thanks" id="thanksMsg">감사합니다. 24시간 안에 연락드리겠습니다.</p>
+          <p class="form-note">* 제출해 주신 정보는 사전 적합도 심사 및 숏폼 기획 분석에만 안전하게 사용됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-info">
+    <p>나우모아애드 (NowMoaAd)</p>
+    <p>전문직 · 기업 숏폼 퍼스널 브랜딩 / 숏폼 광고 대행 / 미디어 콘텐츠 기획</p>
+  </div>
+  <p class="foot-copyright">© 2026 NowMoaAd. All Rights Reserved.</p>
+</footer>
+
+<script>
+  var topBars = document.querySelector('.top-bars');
+  if(topBars){
+    var setWfOffset = function(){
+      document.documentElement.style.setProperty('--wf-offset', topBars.offsetHeight + 'px');
+    };
+    setWfOffset();
+    window.addEventListener('resize', setWfOffset);
+  }
+
+  var els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var heroImg = document.querySelector('.hero .photo img');
+  if(heroImg && !reduceMotion){
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+      if(!ticking){
+        window.requestAnimationFrame(function(){
+          var y = Math.min(window.scrollY, window.innerHeight);
+          heroImg.style.transform = 'scale(1.05) translateY(' + (y*0.08) + 'px)';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+
+  var form = document.getElementById('diagForm');
+  var thanks = document.getElementById('thanksMsg');
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    form.style.display = 'none';
+    thanks.style.display = 'block';
+  });
+</script>
+</body>
+</html>
