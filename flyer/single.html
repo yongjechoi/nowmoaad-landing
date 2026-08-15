@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>NowMoaAd 부동산 전단지 — 단면</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --dark:#0F0F10; --card:#17171B; --card-deep:#121215;
+    --line:#2A2A31;
+    --white:#FFFFFF; --soft:#B7B7BE; --faint:#7C7C84;
+    --accent:#CCFF00; --gold:#E8B84B;
+    --font:'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0;}
+  body{background:#3a3a3d; font-family:var(--font);}
+  .page{
+    width:8.27in; height:11.69in; margin:0 auto;
+    background:var(--dark); color:var(--white);
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .page::before{
+    content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:26px 26px;
+  }
+  .page::after{
+    content:''; position:absolute; right:-2.6in; top:2.6in; width:6in; height:6in; z-index:0; pointer-events:none;
+    background:radial-gradient(circle, rgba(204,255,0,.09) 0%, transparent 70%);
+  }
+  .alert{
+    position:relative; z-index:1;
+    background:var(--accent); color:var(--dark); font-weight:800;
+    font-size:14px; text-align:center; padding:12px 20px; letter-spacing:-.01em; line-height:1.4;
+  }
+  .wrap{position:relative; z-index:1; padding:0.4in 0.55in 0;}
+
+  h1{font-size:33px; font-weight:800; letter-spacing:-.025em; line-height:1.3; margin:16px 0 0; color:#fff;}
+  .mark{color:var(--accent);}
+  .sub{font-size:14.5px; font-weight:500; color:var(--soft); line-height:1.65; margin-top:16px; max-width:6.9in;}
+  .sub b{color:#fff; font-weight:800;}
+  .note{margin-top:10px; font-size:11.5px; color:var(--faint);}
+
+  .mid-head{margin-top:30px; text-align:center;}
+  .mid-head .eyebrow{display:inline-block; font-size:13px; letter-spacing:.06em; text-transform:uppercase; font-weight:800; color:var(--dark); background:var(--accent); padding:6px 15px; border-radius:20px;}
+  .mid-head h2{font-size:19px; font-weight:800; margin:12px 0 0; color:#fff;}
+
+  .plans{margin-top:20px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+  .plan{background:var(--card); border:1.5px solid var(--line); border-radius:14px; padding:18px 15px; display:flex; flex-direction:column;}
+  .plan.gold{border-color:var(--gold); box-shadow:0 0 30px -10px rgba(232,184,75,.42);}
+  .plan .medal{font-size:21px;}
+  .plan .pname{font-size:13.5px; font-weight:800; color:#fff; margin-top:6px; line-height:1.35;}
+  .plan .rec{font-size:10px; color:var(--faint); margin-top:6px; line-height:1.48; min-height:28px;}
+  .plan .price-wrap{margin-top:10px; padding-top:10px; border-top:1px solid var(--line);}
+  .plan .price{font-size:19px; font-weight:800; color:var(--accent);}
+  .plan.gold .price{color:var(--gold);}
+  .plan .unit{font-size:9px; color:var(--faint); margin-top:2px;}
+  .plan .flist{margin-top:10px; display:flex; flex-direction:column; gap:7px;}
+  .plan .flist div{font-size:10px; color:var(--soft); line-height:1.45; padding-left:11px; position:relative;}
+  .plan .flist div::before{content:'·'; position:absolute; left:0; color:var(--accent); font-weight:800;}
+  .plan.gold .flist div::before{color:var(--gold);}
+  .plan .flist b{color:#fff; font-weight:700;}
+  .plan .hook{margin-top:9px; font-size:9.5px; font-weight:800; color:#fff; background:var(--card-deep); border-radius:7px; padding:7px 9px; line-height:1.4;}
+
+  .spacer{flex:1;}
+
+  .benefit{
+    margin:30px 0.55in 0; background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:16px 20px; display:flex; align-items:center; gap:12px;
+  }
+  .benefit .star{color:var(--gold); font-size:19px; flex:none;}
+  .benefit .t{font-size:13px; font-weight:700; color:var(--soft); line-height:1.5;}
+  .benefit .t b{color:#fff; font-weight:800;}
+
+  .contact{
+    margin:18px 0.55in 0.5in; background:linear-gradient(135deg, var(--card) 0%, var(--card-deep) 100%);
+    border:1px solid var(--accent); border-radius:18px; padding:26px 30px; text-align:center;
+    box-shadow:0 0 45px -12px rgba(204,255,0,.3);
+  }
+  .contact .lbl{font-size:12.5px; font-weight:700; color:var(--faint); letter-spacing:.06em; text-transform:uppercase;}
+  .contact .num{font-size:44px; font-weight:800; color:var(--accent); letter-spacing:-.01em; margin-top:8px;}
+  .contact .msg{font-size:13px; color:var(--soft); margin-top:10px; line-height:1.55;}
+  .contact .msg b{color:#fff;}
+  .contact .brandline{margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:11.5px; color:var(--faint);}
+  .contact .brandline b{color:#fff; font-weight:800;}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="alert">🔥 [부동산 한정 파격 혜택] 전단지 보고 연락 주신 소장님께만 '첫 1편 비용 0원 무료 제작'</div>
+
+  <div class="wrap">
+    <h1>"네이버 부동산 광고비는 오르는데,<br>왜 사무실 전화는 조용할까요?"</h1>
+    <p class="sub">손님들은 이미 네이버 검색 대신 <b>유튜브 쇼츠, 인스타 릴스</b>로 매물을 봅니다.<br>소장님 매물 영상 1편을 <b>비용 0원에 무료로 편집·배포</b>해 드릴 테니,<br>영상 퀄리티와 문의 효과를 직접 눈으로 확인하시고 마음에 들 때만 계약하세요!</p>
+    <div class="note">※ 지역별 매월 선착순 5개 부동산 한정</div>
+
+    <div class="mid-head">
+      <span class="eyebrow">전단지 독점 혜택</span>
+      <h2>소장님 매물에 딱 맞춘 3가지 맞춤형 숏폼 플랜</h2>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="medal">🥉</div>
+        <div class="pname">01. 원격 편집 & 배포형</div>
+        <div class="rec">추천: 아파트, 상가, 오피스텔 등 일반 중개 매물</div>
+        <div class="price-wrap">
+          <div class="price">월 180만원</div>
+          <div class="unit">1건당 18만원 · 월 10건</div>
+        </div>
+        <div class="flist">
+          <div>스마트폰으로 찍어만 보내주시면 끝!</div>
+          <div>3초 후킹 컷편집 + 자막/BGM 완성</div>
+          <div><b>4대 매체 배포 대행</b> (쇼츠·릴스·틱톡·클립)</div>
+        </div>
+      </div>
+
+      <div class="plan">
+        <div class="medal">🥈</div>
+        <div class="pname">02. 대량 융단폭격형</div>
+        <div class="rec">추천: 원룸, 투룸, 지식산업센터 등 회전 빠른 매물</div>
+        <div class="price-wrap">
+          <div class="price">월 300만원</div>
+          <div class="unit">월 20건 · 주 5회 업로드</div>
+        </div>
+        <div class="hook">"매일 업로드로 우리 지역<br>매물 알고리즘 장악!"</div>
+        <div class="flist">
+          <div>월 20건 집중 편집 및 매일 채널 관리</div>
+          <div><b>즉각적인 문의량 극대화</b></div>
+        </div>
+      </div>
+
+      <div class="plan gold">
+        <div class="medal">🥇</div>
+        <div class="pname">03. 프리미엄 퍼스널 브랜딩</div>
+        <div class="rec">추천: 강남 고급빌라, 빌딩매매, 토지/시행 등 고가 매물</div>
+        <div class="price-wrap">
+          <div class="price">월 350만원</div>
+          <div class="unit">월 4건 · 하이엔드 풀패키지</div>
+        </div>
+        <div class="hook">"지역 1등 공인중개사를 위한<br>독보적 권위 브랜딩!"</div>
+        <div class="flist">
+          <div><b>현장 올인원 출장 촬영</b> + 15년 차 PD 디렉팅</div>
+          <div>전담 대본 기획 + 타깃 맞춤형 광고 세팅</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <span class="star">★</span>
+      <span class="t"><b>[특별 혜택]</b> 똥손 소장님도 단숨에 금손으로! 15년 차 전문가의 1:1 맞춤 촬영 가이드 무료 제공</span>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="contact">
+    <div class="lbl">첫 1편 무료 제작 신청 · 전화 상담</div>
+    <div class="num">📞 010-5155-5502</div>
+    <div class="msg">문자 또는 전화로 <b>"전단지 보고 연락드렸습니다"</b>라고 남겨주시면<br>즉시 1편 무료 접수 진행됩니다.</div>
+    <div class="brandline"><b>NowMoaAd (나우모아애드)</b> · 숏폼 마케팅 & 퍼스널 브랜딩 전문</div>
+  </div>
+</div>
+</body>
+</html>
